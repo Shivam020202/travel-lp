@@ -1,0 +1,3223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelEscape - Your Gateway to Adventure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+            color: #333;
+        }
+
+        /* Packages Section Styles */
+        .travel_packages_section {
+            padding: 4rem 0;
+            background-color: #f8f9fa;
+        }
+
+        .travel_packages_container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .travel_section_header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .travel_section_title {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .travel_section_subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .travel_packages_grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .travel_package_card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .travel_package_card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .travel_package_image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .travel_package_location {
+            position: absolute;
+            top: 175px;
+            left: 15px;
+            background-color: rgba(255, 107, 53, 0.9);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            z-index: 1;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .travel_location_icon {
+            font-size: 0.9rem;
+        }
+
+        .travel_package_content {
+            padding: 1.5rem;
+        }
+
+        .travel_package_title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .travel_package_details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .travel_package_duration {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .travel_duration_icon {
+            font-size: 0.9rem;
+        }
+
+        .travel_package_price {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .travel_price_text {
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        .travel_price_amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FF6B35;
+            line-height: 1.2;
+        }
+
+        .travel_price_person {
+            font-size: 0.75rem;
+            color: #777;
+        }
+
+        .travel_package_features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin-bottom: 1.2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .travel_feature_item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .travel_feature_icon {
+            font-size: 1rem;
+            color: #FF6B35;
+        }
+
+        .travel_package_actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .travel_call_btn,
+        .travel_whatsapp_btn {
+            flex: 1;
+            padding: 0.8rem 0;
+            border-radius: 5px;
+            font-weight: 600;
+            text-align: center;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .travel_call_btn {
+            background-color: #FF6B35;
+            color: white;
+            border: 1px solid #FF6B35;
+        }
+
+        .travel_call_btn:hover {
+            background-color: #e55a2b;
+        }
+
+        .travel_whatsapp_btn {
+            background-color: #25D366;
+            color: white;
+            border: 1px solid #25D366;
+        }
+
+        .travel_whatsapp_btn:hover {
+            background-color: #20bd5c;
+        }
+
+        .travel_packages_cta {
+            text-align: center;
+        }
+
+        /* Responsive styles for packages section */
+        @media (max-width: 768px) {
+            .travel_section_title {
+                font-size: 2rem;
+            }
+
+            .travel_packages_grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 576px) {
+            .travel_packages_section {
+                padding: 3rem 0;
+            }
+
+            .travel_section_title {
+                font-size: 1.8rem;
+            }
+
+            .travel_section_subtitle {
+                font-size: 1rem;
+            }
+
+            .travel_packages_grid {
+                grid-template-columns: 1fr;
+            }
+
+            .travel_package_image {
+                height: 180px;
+            }
+
+            .travel_package_location {
+                top: 155px;
+            }
+        }
+
+        /* Navbar Styles */
+        .travel_navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .travel_navbar.scrolled {
+            padding: 0.7rem 2rem;
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        .travel_nav_container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .travel_logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #FF6B35;
+            text-decoration: none;
+        }
+
+        .travel_logo span {
+            color: #2E5EAA;
+        }
+
+        .travel_nav_links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .travel_nav_link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .travel_nav_link:hover {
+            color: #FF6B35;
+        }
+
+        .travel_nav_cta {
+            background-color: #FF6B35;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid #FF6B35;
+        }
+
+        .travel_nav_cta:hover {
+            background-color: transparent;
+            color: #FF6B35;
+        }
+
+        .travel_mobile_menu_btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #333;
+        }
+
+        /* Hero Section Styles */
+        .travel_hero_section {
+            height: 100vh;
+            width: 100%;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .travel_bg_slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .travel_bg_slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .travel_bg_slide.active {
+            opacity: 1;
+        }
+
+        .travel_bg_overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%);
+            z-index: -1;
+        }
+
+        .travel_hero_container {
+            max-width: 1400px;
+            height: calc(100vh - 80px);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .travel_hero_content {
+            flex: 1;
+            color: white;
+            padding-right: 3rem;
+        }
+
+        .travel_hero_tagline {
+            font-size: 1.2rem;
+            color: #FF6B35;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .travel_hero_title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .travel_hero_description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        .travel_hero_ctas {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .travel_primary_cta {
+            background-color: #FF6B35;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 2px solid #FF6B35;
+        }
+
+        .travel_primary_cta:hover {
+            background-color: transparent;
+            color: white;
+        }
+
+        .travel_secondary_cta {
+            background-color: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 2px solid white;
+        }
+
+        .travel_secondary_cta:hover {
+            background-color: white;
+            color: #333;
+        }
+
+        .travel_trust_indicators {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .travel_trust_item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .travel_trust_icon {
+            width: 20px;
+            height: 20px;
+            background-color: #FF6B35;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .travel_trust_text {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Form Styles */
+        .travel_form_container {
+            width: 40%;
+            max-width: 450px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .travel_form_title {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .travel_form_subtitle {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .travel_form_group {
+            margin-bottom: 1.2rem;
+        }
+
+        .travel_form_label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .travel_form_input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .travel_form_input:focus {
+            outline: none;
+            border-color: #FF6B35;
+        }
+
+        .travel_form_select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+        }
+
+        .travel_form_row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .travel_form_col {
+            flex: 1;
+        }
+
+        .travel_form_submit {
+            width: 100%;
+            background-color: #FF6B35;
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 0.5rem;
+        }
+
+        .travel_form_submit:hover {
+            background-color: #e55a2b;
+        }
+
+        .travel_testimonial {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 3px solid #FF6B35;
+            margin-top: 2rem;
+        }
+
+        .travel_testimonial_text {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .travel_testimonial_author {
+            font-weight: 600;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 991px) {
+            .travel_hero_container {
+                flex-direction: column;
+                padding-top: 2rem;
+                height: auto;
+                min-height: calc(100vh - 80px);
+            }
+
+            .travel_hero_content {
+                padding-right: 0;
+                margin-bottom: 2rem;
+                text-align: center;
+            }
+
+            .travel_hero_description {
+                margin: 0 auto 2rem;
+            }
+
+            .travel_hero_ctas {
+                justify-content: center;
+            }
+
+            .travel_trust_indicators {
+                justify-content: center;
+            }
+
+            .travel_form_container {
+                width: 100%;
+                max-width: 500px;
+                margin: 0 auto 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .travel_nav_links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                height: 0;
+                background-color: white;
+                flex-direction: column;
+                gap: 0;
+                overflow: hidden;
+                transition: height 0.3s ease;
+            }
+
+            .travel_nav_links.active {
+                height: calc(100vh - 80px);
+                overflow-y: auto;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .travel_nav_link {
+                width: 100%;
+                padding: 1.5rem 2rem;
+                text-align: center;
+                border-bottom: 1px solid #eee;
+            }
+
+            .travel_nav_cta {
+                margin: 1rem 2rem;
+                display: block;
+                text-align: center;
+            }
+
+            .travel_mobile_menu_btn {
+                display: block;
+            }
+
+            .travel_hero_title {
+                font-size: 2.5rem;
+            }
+
+            .travel_hero_tagline {
+                font-size: 1rem;
+            }
+
+            .travel_trust_indicators {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+
+    <style>
+        /* Testimonials Section Styles */
+        .travel_testimonials_section {
+            padding: 5rem 0;
+            background-color: #fff;
+            overflow: hidden;
+        }
+
+        .travel_testimonials_container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Slider Styles */
+        .travel_testimonials_slider {
+            position: relative;
+            margin: 2rem 0 3rem;
+            overflow: hidden;
+        }
+
+        .travel_testimonials_track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .travel_testimonial_slide {
+            min-width: 100%;
+            padding: 0 1rem;
+            box-sizing: border-box;
+        }
+
+        /* On larger screens, show multiple testimonials */
+        @media (min-width: 992px) {
+            .travel_testimonial_slide {
+                min-width: 33.333%;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            .travel_testimonial_slide {
+                min-width: 50%;
+            }
+        }
+
+        .travel_testimonial_card {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 2.5rem 2rem 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: 100%;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .travel_testimonial_card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .travel_testimonial_quote {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            line-height: 1;
+            color: rgba(255, 107, 53, 0.1);
+            font-family: Georgia, serif;
+        }
+
+        .travel_testimonial_content {
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
+            position: relative;
+            z-index: 1;
+        }
+
+        .travel_testimonial_rating {
+            display: flex;
+            margin-bottom: 1.5rem;
+            color: #FFD700;
+            font-size: 1.2rem;
+        }
+
+        .travel_testimonial_author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .travel_author_image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            border: 3px solid white;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .travel_author_info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .travel_author_name {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+            color: #333;
+        }
+
+        .travel_author_trip {
+            font-size: 0.9rem;
+            color: #FF6B35;
+        }
+
+        /* Controls Styles */
+        .travel_testimonials_controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+            gap: 1rem;
+        }
+
+        .travel_testimonial_prev,
+        .travel_testimonial_next {
+            background-color: white;
+            border: 2px solid #FF6B35;
+            color: #FF6B35;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .travel_testimonial_prev:hover,
+        .travel_testimonial_next:hover {
+            background-color: #FF6B35;
+            color: white;
+        }
+
+        .travel_testimonial_dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .travel_testimonial_dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ddd;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .travel_testimonial_dot.active {
+            background-color: #FF6B35;
+        }
+
+        .travel_testimonials_cta {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .travel_testimonials_section {
+                padding: 4rem 0;
+            }
+
+            .travel_testimonial_card {
+                padding: 2rem 1.5rem 1.5rem;
+            }
+
+            .travel_testimonial_quote {
+                font-size: 4rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .travel_testimonial_slide {
+                padding: 0 0.5rem;
+            }
+
+            .travel_testimonial_card {
+                padding: 1.8rem 1.2rem 1.5rem;
+            }
+
+            .travel_testimonial_quote {
+                font-size: 3.5rem;
+            }
+
+            .travel_author_image {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+
+    <style>
+        /* About Section Styles */
+        .travel_about_section {
+            padding: 5rem 0;
+            background-color: #f8f9fa;
+            position: relative;
+        }
+
+        .travel_about_section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background-color: rgba(255, 107, 53, 0.05);
+            clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%);
+            z-index: 0;
+        }
+
+        .travel_about_container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .travel_about_content {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+            align-items: center;
+        }
+
+        /* Image Container */
+        .travel_about_image_container {
+            flex: 1;
+            position: relative;
+            min-height: 450px;
+        }
+
+        .travel_about_image_main {
+            width: 100%;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 2;
+        }
+
+        .travel_about_image_accent {
+            position: absolute;
+            width: 50%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            border: 5px solid white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            bottom: 0;
+            right: -50px;
+            z-index: 3;
+        }
+
+        .travel_about_experience {
+            position: absolute;
+            left: -20px;
+            top: 50px;
+            background-color: #FF6B35;
+            border-radius: 5px;
+            padding: 1.5rem;
+            color: white;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 4;
+        }
+
+        .travel_experience_number {
+            display: block;
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+
+        .travel_experience_text {
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Text Content */
+        .travel_about_text {
+            flex: 1;
+        }
+
+        .travel_about_heading {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .travel_about_heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: #FF6B35;
+        }
+
+        .travel_about_paragraph {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        /* Values */
+        .travel_about_values {
+            margin-bottom: 2rem;
+        }
+
+        .travel_value_item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .travel_value_icon {
+            font-size: 1.5rem;
+            color: #FF6B35;
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 107, 53, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .travel_value_content h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: #333;
+        }
+
+        .travel_value_content p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Stats */
+        .travel_about_stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            padding: 1.5rem 0;
+        }
+
+        .travel_stat_item {
+            flex: 1;
+            min-width: calc(50% - 1.5rem);
+            text-align: center;
+        }
+
+        .travel_stat_number {
+            display: block;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #FF6B35;
+            line-height: 1.2;
+        }
+
+        .travel_stat_label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Certification */
+        .travel_about_certification {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .travel_certification_title {
+            font-weight: 600;
+            color: #333;
+            margin-right: 0.5rem;
+        }
+
+        .travel_certification_logos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .travel_certification_logo {
+            background-color: #f0f0f0;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-weight: 700;
+            color: #333;
+            font-size: 0.9rem;
+        }
+
+        /* CTAs */
+        .travel_about_ctas {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .travel_secondary_about_cta {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            background-color: transparent;
+            color: #333;
+            border: 2px solid #333;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .travel_secondary_about_cta:hover {
+            background-color: #333;
+            color: white;
+        }
+
+        /* Team Section */
+        .travel_team_section {
+            margin-top: 4rem;
+        }
+
+        .travel_team_heading {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .travel_team_grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .travel_team_member {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding-bottom: 1.5rem;
+        }
+
+        .travel_team_member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .travel_member_image {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .travel_member_name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 1rem 1.5rem 0.3rem;
+            color: #333;
+        }
+
+        .travel_member_title {
+            font-size: 0.9rem;
+            color: #FF6B35;
+            margin: 0 1.5rem 1rem;
+            font-weight: 500;
+        }
+
+        .travel_member_bio {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+            margin: 0 1.5rem;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 991px) {
+            .travel_about_content {
+                flex-direction: column;
+            }
+
+            .travel_about_image_container {
+                width: 100%;
+                margin-bottom: 2rem;
+            }
+
+            .travel_about_image_accent {
+                right: 0;
+            }
+
+            .travel_about_experience {
+                left: 0;
+            }
+
+            .travel_about_heading {
+                font-size: 1.8rem;
+            }
+
+            .travel_stat_item {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .travel_about_section {
+                padding: 4rem 0;
+            }
+
+            .travel_about_section::before {
+                width: 0;
+            }
+
+            .travel_about_image_container {
+                min-height: 350px;
+            }
+
+            .travel_about_image_main {
+                height: 300px;
+            }
+
+            .travel_about_image_accent {
+                height: 180px;
+            }
+
+            .travel_experience_number {
+                font-size: 2.5rem;
+            }
+
+            .travel_experience_text {
+                font-size: 0.8rem;
+            }
+
+            .travel_team_grid {
+                grid-template-columns: 1fr;
+            }
+
+            .travel_about_ctas {
+                flex-direction: column;
+            }
+
+            .travel_primary_cta,
+            .travel_secondary_about_cta {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .travel_about_image_container {
+                min-height: 300px;
+            }
+
+            .travel_about_image_main {
+                height: 250px;
+            }
+
+            .travel_about_image_accent {
+                width: 40%;
+                height: 150px;
+                right: 0;
+            }
+
+            .travel_about_experience {
+                padding: 1rem;
+            }
+
+            .travel_about_paragraph {
+                font-size: 1rem;
+            }
+
+            .travel_about_certification {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .travel_certification_logos {
+                width: 100%;
+            }
+        }
+    </style>
+
+    <style>
+        /* Gallery Section Styles */
+        .travel_gallery_section {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .travel_gallery_container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .travel_gallery_grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 1rem;
+            margin: 3rem 0 2.5rem;
+        }
+
+        .travel_gallery_item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 0;
+            padding-bottom: 66.67%;
+            /* 3:2 aspect ratio */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .travel_gallery_item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .travel_gallery_item_large {
+            grid-column: span 2;
+        }
+
+        .travel_gallery_image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+        }
+
+        .travel_gallery_item:hover .travel_gallery_image {
+            transform: scale(1.05);
+        }
+
+        .travel_gallery_overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .travel_gallery_item:hover .travel_gallery_overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .travel_gallery_title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .travel_gallery_desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .travel_gallery_cta {
+            text-align: center;
+        }
+
+        /* CTA Section Styles */
+        .travel_cta_section {
+            position: relative;
+            padding: 6rem 0;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .travel_cta_bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+
+        .travel_cta_overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(46, 94, 170, 0.85) 0%, rgba(255, 107, 53, 0.85) 100%);
+            z-index: -1;
+        }
+
+        .travel_cta_container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .travel_cta_content {
+            background-color: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            padding: 3rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .travel_cta_title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .travel_cta_text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .travel_cta_features {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .travel_cta_feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .travel_cta_icon {
+            width: 24px;
+            height: 24px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .travel_cta_buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .travel_cta_main_btn {
+            background-color: white;
+            color: #FF6B35;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 2px solid white;
+        }
+
+        .travel_cta_main_btn:hover {
+            background-color: transparent;
+            color: white;
+        }
+
+        .travel_cta_call_btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 2px solid transparent;
+        }
+
+        .travel_cta_call_btn:hover {
+            background-color: transparent;
+            border-color: white;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .travel_gallery_grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .travel_gallery_grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .travel_cta_features {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+
+            .travel_cta_title {
+                font-size: 2rem;
+            }
+
+            .travel_cta_content {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .travel_gallery_grid {
+                grid-template-columns: 1fr;
+            }
+
+            .travel_gallery_item_large {
+                grid-column: span 1;
+            }
+
+            .travel_cta_buttons {
+                flex-direction: column;
+            }
+
+            .travel_cta_main_btn,
+            .travel_cta_call_btn {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .travel_cta_section {
+                padding: 4rem 0;
+            }
+
+            .travel_cta_title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+
+    <style>
+        /* Footer Styles */
+        .travel_footer {
+            background-color: #1e2639;
+            color: #f5f5f5;
+            padding: 4rem 0 0;
+            position: relative;
+        }
+
+        .travel_footer_container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .travel_footer_main {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 2.5rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Company Info Column */
+        .travel_footer_company {
+            padding-right: 2rem;
+        }
+
+        .travel_footer_logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .travel_footer_logo span {
+            color: #FF6B35;
+        }
+
+        .travel_footer_tagline {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: #FF6B35;
+            font-weight: 500;
+        }
+
+        .travel_footer_description {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+        }
+
+        .travel_footer_social {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .travel_social_icon {
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .travel_social_icon:hover {
+            background-color: #FF6B35;
+            transform: translateY(-3px);
+        }
+
+        /* Links Columns */
+        .travel_footer_heading {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            color: white;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .travel_footer_heading::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #FF6B35;
+        }
+
+        .travel_footer_links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .travel_footer_links li {
+            margin-bottom: 0.7rem;
+        }
+
+        .travel_footer_links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .travel_footer_links a:hover {
+            color: #FF6B35;
+            transform: translateX(5px);
+        }
+
+        /* Contact Column */
+        .travel_footer_contact_list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .travel_footer_contact_list li {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .travel_contact_icon {
+            font-size: 1.2rem;
+            color: #FF6B35;
+            flex-shrink: 0;
+        }
+
+        .travel_footer_contact_list div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .travel_footer_contact_list a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .travel_footer_contact_list a:hover {
+            color: #FF6B35;
+        }
+
+        .travel_footer_contact_list span {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .travel_footer_cta {
+            background-color: #FF6B35;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .travel_footer_cta:hover {
+            background-color: #e55a2b;
+            transform: translateY(-3px);
+        }
+
+        /* Awards Section */
+        .travel_footer_awards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .travel_award_item {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Footer Bottom */
+        .travel_footer_bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .travel_footer_copyright {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .travel_footer_legal {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .travel_footer_legal a {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .travel_footer_legal a:hover {
+            color: #FF6B35;
+        }
+
+        /* Newsletter Toggle and Popup */
+        .travel_newsletter_toggle {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #FF6B35;
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 5px 5px 0 0;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .travel_newsletter_toggle span {
+            transition: transform 0.3s ease;
+        }
+
+        .travel_newsletter_toggle.active span {
+            transform: rotate(180deg);
+        }
+
+        .travel_newsletter_popup {
+            background-color: rgba(255, 255, 255, 0.03);
+            width: 100%;
+            padding: 1rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: none;
+        }
+
+        .travel_newsletter_popup.active {
+            display: block;
+        }
+
+        .travel_newsletter_form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .travel_newsletter_form input {
+            flex: 1;
+            padding: 0.7rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .travel_newsletter_form input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .travel_newsletter_form button {
+            background-color: #FF6B35;
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .travel_newsletter_form button:hover {
+            background-color: #e55a2b;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .travel_footer_main {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .travel_footer_company {
+                grid-column: span 2;
+                padding-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .travel_footer {
+                padding-top: 3rem;
+            }
+
+            .travel_footer_main {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .travel_footer_company {
+                grid-column: span 1;
+            }
+
+            .travel_footer_bottom {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .travel_footer_legal {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .travel_footer_awards {
+                gap: 0.8rem;
+            }
+
+            .travel_award_item {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .travel_footer_legal {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .travel_newsletter_form {
+                flex-direction: column;
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="travel_navbar">
+        <div class="travel_nav_container">
+            <a href="#" class="travel_logo">Travel<span>Escape</span></a>
+            <button class="travel_mobile_menu_btn">☰</button>
+            <div class="travel_nav_links">
+                <a href="#packages" class="travel_nav_link">Packages</a>
+                <a href="#reviews" class="travel_nav_link">Reviews</a>
+                <a href="#gallery" class="travel_nav_link">Gallery</a>
+                <a href="#about" class="travel_nav_link">About</a>
+                <a href="#book-now" class="travel_nav_cta">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="travel_hero_section">
+        <!-- Background Image Slider -->
+        <div class="travel_bg_slider">
+            <div class="travel_bg_slide active" style="background-image: url('/api/placeholder/1920/1080');"></div>
+            <div class="travel_bg_slide" style="background-image: url('/api/placeholder/1920/1080');"></div>
+            <div class="travel_bg_slide" style="background-image: url('/api/placeholder/1920/1080');"></div>
+        </div>
+        <div class="travel_bg_overlay"></div>
+
+        <div class="travel_hero_container">
+            <!-- Hero Content -->
+            <div class="travel_hero_content">
+                <div class="travel_hero_tagline">EXPLORE • DISCOVER • EXPERIENCE</div>
+                <h1 class="travel_hero_title">Discover the World's Most Beautiful Destinations</h1>
+                <p class="travel_hero_description">
+                    Embark on a journey of a lifetime with expertly curated travel packages designed to create
+                    unforgettable memories. From serene beaches to majestic mountains, we have something for every
+                    traveler.
+                </p>
+                <div class="travel_hero_ctas">
+                    <a href="#book-now" class="travel_primary_cta">Book Your Trip</a>
+                    <a href="#packages" class="travel_secondary_cta">Explore Packages</a>
+                </div>
+                <div class="travel_trust_indicators">
+                    <div class="travel_trust_item">
+                        <div class="travel_trust_icon">✓</div>
+                        <span class="travel_trust_text">4.9/5 on TripAdvisor</span>
+                    </div>
+                    <div class="travel_trust_item">
+                        <div class="travel_trust_icon">✓</div>
+                        <span class="travel_trust_text">10,000+ Happy Travelers</span>
+                    </div>
+                    <div class="travel_trust_item">
+                        <div class="travel_trust_icon">✓</div>
+                        <span class="travel_trust_text">Best Price Guarantee</span>
+                    </div>
+                </div>
+                <div class="travel_testimonial">
+                    <p class="travel_testimonial_text">"The trip organized by TravelEscape was absolutely phenomenal!
+                        Everything was perfectly arranged and the destinations were breathtaking."</p>
+                    <div class="travel_testimonial_author">- Sarah Williams, London</div>
+                </div>
+            </div>
+
+            <!-- Booking Form -->
+            <div class="travel_form_container" id="book-now">
+                <h2 class="travel_form_title">Book Your Dream Vacation</h2>
+                <p class="travel_form_subtitle">Get a personalized quote in just a few clicks</p>
+                <form class="travel_booking_form">
+                    <div class="travel_form_group">
+                        <label for="travel_destination" class="travel_form_label">Destination</label>
+                        <select id="travel_destination" class="travel_form_select">
+                            <option value="">Select Destination</option>
+                            <option value="bali">Bali, Indonesia</option>
+                            <option value="paris">Paris, France</option>
+                            <option value="santorini">Santorini, Greece</option>
+                            <option value="tokyo">Tokyo, Japan</option>
+                            <option value="maldives">Maldives</option>
+                        </select>
+                    </div>
+                    <div class="travel_form_row">
+                        <div class="travel_form_col">
+                            <div class="travel_form_group">
+                                <label for="travel_check_in" class="travel_form_label">Check In</label>
+                                <input type="date" id="travel_check_in" class="travel_form_input">
+                            </div>
+                        </div>
+                        <div class="travel_form_col">
+                            <div class="travel_form_group">
+                                <label for="travel_check_out" class="travel_form_label">Check Out</label>
+                                <input type="date" id="travel_check_out" class="travel_form_input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="travel_form_row">
+                        <div class="travel_form_col">
+                            <div class="travel_form_group">
+                                <label for="travel_adults" class="travel_form_label">Adults</label>
+                                <select id="travel_adults" class="travel_form_select">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5+">5+</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="travel_form_col">
+                            <div class="travel_form_group">
+                                <label for="travel_children" class="travel_form_label">Children</label>
+                                <select id="travel_children" class="travel_form_select">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4+">4+</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="travel_form_group">
+                        <label for="travel_name" class="travel_form_label">Full Name</label>
+                        <input type="text" id="travel_name" class="travel_form_input" placeholder="Your full name">
+                    </div>
+                    <div class="travel_form_group">
+                        <label for="travel_email" class="travel_form_label">Email</label>
+                        <input type="email" id="travel_email" class="travel_form_input"
+                            placeholder="Your email address">
+                    </div>
+                    <button type="submit" class="travel_form_submit">Get Your Free Quote</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Packages Section -->
+    <section class="travel_packages_section" id="packages">
+        <div class="travel_packages_container">
+            <div class="travel_section_header">
+                <h2 class="travel_section_title">Featured Travel Packages</h2>
+                <p class="travel_section_subtitle">Discover our handpicked selection of premium travel experiences</p>
+            </div>
+
+            <div class="travel_packages_grid">
+                <!-- Package Card 1 -->
+                <div class="travel_package_card">
+                    <div class="travel_package_image" style="background-image: url('/api/placeholder/600/400');"></div>
+                    <div class="travel_package_location">
+                        <i class="travel_location_icon">📍</i>
+                        <span>Santorini, Greece</span>
+                    </div>
+                    <div class="travel_package_content">
+                        <h3 class="travel_package_title">Greek Islands Explorer</h3>
+                        <div class="travel_package_details">
+                            <div class="travel_package_duration">
+                                <i class="travel_duration_icon">🗓️</i>
+                                <span>7 Days / 6 Nights</span>
+                            </div>
+                            <div class="travel_package_price">
+                                <span class="travel_price_text">From</span>
+                                <span class="travel_price_amount">$1,299</span>
+                                <span class="travel_price_person">per person</span>
+                            </div>
+                        </div>
+                        <div class="travel_package_features">
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🍽️</i>
+                                <span>All Meals</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🏨</i>
+                                <span>4-Star Hotel</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">👁️</i>
+                                <span>Guided Tours</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🚕</i>
+                                <span>Airport Transfer</span>
+                            </div>
+                        </div>
+                        <div class="travel_package_actions">
+                            <a href="tel:+12345678901" class="travel_call_btn">
+                                <i>📞</i> Call Now
+                            </a>
+                            <a href="https://wa.me/12345678901" class="travel_whatsapp_btn">
+                                <i>💬</i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package Card 2 -->
+                <div class="travel_package_card">
+                    <div class="travel_package_image" style="background-image: url('/api/placeholder/600/400');"></div>
+                    <div class="travel_package_location">
+                        <i class="travel_location_icon">📍</i>
+                        <span>Bali, Indonesia</span>
+                    </div>
+                    <div class="travel_package_content">
+                        <h3 class="travel_package_title">Bali Paradise Retreat</h3>
+                        <div class="travel_package_details">
+                            <div class="travel_package_duration">
+                                <i class="travel_duration_icon">🗓️</i>
+                                <span>10 Days / 9 Nights</span>
+                            </div>
+                            <div class="travel_package_price">
+                                <span class="travel_price_text">From</span>
+                                <span class="travel_price_amount">$1,599</span>
+                                <span class="travel_price_person">per person</span>
+                            </div>
+                        </div>
+                        <div class="travel_package_features">
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🍽️</i>
+                                <span>Breakfast & Dinner</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🏨</i>
+                                <span>Luxury Villa</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">👁️</i>
+                                <span>5 Excursions</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🚕</i>
+                                <span>Private Transfer</span>
+                            </div>
+                        </div>
+                        <div class="travel_package_actions">
+                            <a href="tel:+12345678901" class="travel_call_btn">
+                                <i>📞</i> Call Now
+                            </a>
+                            <a href="https://wa.me/12345678901" class="travel_whatsapp_btn">
+                                <i>💬</i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package Card 3 -->
+                <div class="travel_package_card">
+                    <div class="travel_package_image" style="background-image: url('/api/placeholder/600/400');"></div>
+                    <div class="travel_package_location">
+                        <i class="travel_location_icon">📍</i>
+                        <span>Tokyo, Japan</span>
+                    </div>
+                    <div class="travel_package_content">
+                        <h3 class="travel_package_title">Japan Cultural Journey</h3>
+                        <div class="travel_package_details">
+                            <div class="travel_package_duration">
+                                <i class="travel_duration_icon">🗓️</i>
+                                <span>12 Days / 11 Nights</span>
+                            </div>
+                            <div class="travel_package_price">
+                                <span class="travel_price_text">From</span>
+                                <span class="travel_price_amount">$2,499</span>
+                                <span class="travel_price_person">per person</span>
+                            </div>
+                        </div>
+                        <div class="travel_package_features">
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🍽️</i>
+                                <span>All Meals</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🏨</i>
+                                <span>4-Star Hotels</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">👁️</i>
+                                <span>Cultural Tours</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🚕</i>
+                                <span>Bullet Train Pass</span>
+                            </div>
+                        </div>
+                        <div class="travel_package_actions">
+                            <a href="tel:+12345678901" class="travel_call_btn">
+                                <i>📞</i> Call Now
+                            </a>
+                            <a href="https://wa.me/12345678901" class="travel_whatsapp_btn">
+                                <i>💬</i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package Card 4 -->
+                <div class="travel_package_card">
+                    <div class="travel_package_image" style="background-image: url('/api/placeholder/600/400');"></div>
+                    <div class="travel_package_location">
+                        <i class="travel_location_icon">📍</i>
+                        <span>Maldives</span>
+                    </div>
+                    <div class="travel_package_content">
+                        <h3 class="travel_package_title">Maldives Island Escape</h3>
+                        <div class="travel_package_details">
+                            <div class="travel_package_duration">
+                                <i class="travel_duration_icon">🗓️</i>
+                                <span>6 Days / 5 Nights</span>
+                            </div>
+                            <div class="travel_package_price">
+                                <span class="travel_price_text">From</span>
+                                <span class="travel_price_amount">$2,199</span>
+                                <span class="travel_price_person">per person</span>
+                            </div>
+                        </div>
+                        <div class="travel_package_features">
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🍽️</i>
+                                <span>All-Inclusive</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🏨</i>
+                                <span>Water Villa</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">👁️</i>
+                                <span>Water Activities</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🚕</i>
+                                <span>Speedboat Transfer</span>
+                            </div>
+                        </div>
+                        <div class="travel_package_actions">
+                            <a href="tel:+12345678901" class="travel_call_btn">
+                                <i>📞</i> Call Now
+                            </a>
+                            <a href="https://wa.me/12345678901" class="travel_whatsapp_btn">
+                                <i>💬</i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package Card 5 -->
+                <div class="travel_package_card">
+                    <div class="travel_package_image" style="background-image: url('/api/placeholder/600/400');"></div>
+                    <div class="travel_package_location">
+                        <i class="travel_location_icon">📍</i>
+                        <span>Paris, France</span>
+                    </div>
+                    <div class="travel_package_content">
+                        <h3 class="travel_package_title">Romantic Paris Getaway</h3>
+                        <div class="travel_package_details">
+                            <div class="travel_package_duration">
+                                <i class="travel_duration_icon">🗓️</i>
+                                <span>5 Days / 4 Nights</span>
+                            </div>
+                            <div class="travel_package_price">
+                                <span class="travel_price_text">From</span>
+                                <span class="travel_price_amount">$1,099</span>
+                                <span class="travel_price_person">per person</span>
+                            </div>
+                        </div>
+                        <div class="travel_package_features">
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🍽️</i>
+                                <span>Breakfast</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🏨</i>
+                                <span>Boutique Hotel</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">👁️</i>
+                                <span>Seine Cruise</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🚕</i>
+                                <span>Metro Pass</span>
+                            </div>
+                        </div>
+                        <div class="travel_package_actions">
+                            <a href="tel:+12345678901" class="travel_call_btn">
+                                <i>📞</i> Call Now
+                            </a>
+                            <a href="https://wa.me/12345678901" class="travel_whatsapp_btn">
+                                <i>💬</i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package Card 6 -->
+                <div class="travel_package_card">
+                    <div class="travel_package_image" style="background-image: url('/api/placeholder/600/400');"></div>
+                    <div class="travel_package_location">
+                        <i class="travel_location_icon">📍</i>
+                        <span>Bangkok, Thailand</span>
+                    </div>
+                    <div class="travel_package_content">
+                        <h3 class="travel_package_title">Thailand Discovery</h3>
+                        <div class="travel_package_details">
+                            <div class="travel_package_duration">
+                                <i class="travel_duration_icon">🗓️</i>
+                                <span>8 Days / 7 Nights</span>
+                            </div>
+                            <div class="travel_package_price">
+                                <span class="travel_price_text">From</span>
+                                <span class="travel_price_amount">$1,199</span>
+                                <span class="travel_price_person">per person</span>
+                            </div>
+                        </div>
+                        <div class="travel_package_features">
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🍽️</i>
+                                <span>Half Board</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🏨</i>
+                                <span>City & Beach Hotels</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">👁️</i>
+                                <span>Temple Tours</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🚕</i>
+                                <span>Private Guide</span>
+                            </div>
+                        </div>
+                        <div class="travel_package_actions">
+                            <a href="tel:+12345678901" class="travel_call_btn">
+                                <i>📞</i> Call Now
+                            </a>
+                            <a href="https://wa.me/12345678901" class="travel_whatsapp_btn">
+                                <i>💬</i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="travel_packages_cta">
+                <a href="#book-now" class="travel_primary_cta">View All Packages</a>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials Section HTML -->
+    <section class="travel_testimonials_section" id="reviews">
+        <div class="travel_testimonials_container">
+            <div class="travel_section_header">
+                <h2 class="travel_section_title">What Our Travelers Say</h2>
+                <p class="travel_section_subtitle">Read genuine reviews from our satisfied customers</p>
+            </div>
+
+            <div class="travel_testimonials_slider">
+                <div class="travel_testimonials_track">
+                    <!-- Testimonial 1 -->
+                    <div class="travel_testimonial_slide">
+                        <div class="travel_testimonial_card">
+                            <div class="travel_testimonial_quote">"</div>
+                            <p class="travel_testimonial_content">
+                                Our trip to Bali was absolutely perfect from start to finish. The accommodations were
+                                stunning, and the itinerary was perfectly balanced between adventure and relaxation. Our
+                                guide was knowledgeable and friendly, making the experience truly memorable.
+                            </p>
+                            <div class="travel_testimonial_rating">
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                            </div>
+                            <div class="travel_testimonial_author">
+                                <div class="travel_author_image"
+                                    style="background-image: url('/api/placeholder/100/100');">
+                                </div>
+                                <div class="travel_author_info">
+                                    <h4 class="travel_author_name">Emily Johnson</h4>
+                                    <p class="travel_author_trip">Bali Paradise Retreat</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="travel_testimonial_slide">
+                        <div class="travel_testimonial_card">
+                            <div class="travel_testimonial_quote">"</div>
+                            <p class="travel_testimonial_content">
+                                Greece was on our bucket list for years, and TravelEscape made it an unforgettable
+                                experience. From the blue waters of Santorini to the historic sites in Athens,
+                                everything
+                                was expertly planned. The customer service was exceptional!
+                            </p>
+                            <div class="travel_testimonial_rating">
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                            </div>
+                            <div class="travel_testimonial_author">
+                                <div class="travel_author_image"
+                                    style="background-image: url('/api/placeholder/100/100');">
+                                </div>
+                                <div class="travel_author_info">
+                                    <h4 class="travel_author_name">Michael & Sarah Williams</h4>
+                                    <p class="travel_author_trip">Greek Islands Explorer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="travel_testimonial_slide">
+                        <div class="travel_testimonial_card">
+                            <div class="travel_testimonial_quote">"</div>
+                            <p class="travel_testimonial_content">
+                                Japan was a cultural immersion like no other. The attention to detail in our itinerary
+                                was
+                                impressive - from traditional ryokans to modern hotels in Tokyo. The cherry blossom
+                                timing
+                                was perfect and the local guides were extremely knowledgeable.
+                            </p>
+                            <div class="travel_testimonial_rating">
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                            </div>
+                            <div class="travel_testimonial_author">
+                                <div class="travel_author_image"
+                                    style="background-image: url('/api/placeholder/100/100');">
+                                </div>
+                                <div class="travel_author_info">
+                                    <h4 class="travel_author_name">David Chen</h4>
+                                    <p class="travel_author_trip">Japan Cultural Journey</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 4 -->
+                    <div class="travel_testimonial_slide">
+                        <div class="travel_testimonial_card">
+                            <div class="travel_testimonial_quote">"</div>
+                            <p class="travel_testimonial_content">
+                                The Maldives exceeded all our expectations! Our water villa was stunning and the
+                                all-inclusive package was well worth it. The snorkeling excursions were incredible - we
+                                saw
+                                turtles, rays, and so many colorful fish. Paradise found!
+                            </p>
+                            <div class="travel_testimonial_rating">
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                            </div>
+                            <div class="travel_testimonial_author">
+                                <div class="travel_author_image"
+                                    style="background-image: url('/api/placeholder/100/100');">
+                                </div>
+                                <div class="travel_author_info">
+                                    <h4 class="travel_author_name">Jennifer & Robert Taylor</h4>
+                                    <p class="travel_author_trip">Maldives Island Escape</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 5 -->
+                    <div class="travel_testimonial_slide">
+                        <div class="travel_testimonial_card">
+                            <div class="travel_testimonial_quote">"</div>
+                            <p class="travel_testimonial_content">
+                                Our Paris getaway was magical! The boutique hotel was in a perfect location, allowing us
+                                to
+                                walk to many attractions. The Seine dinner cruise was a highlight of our trip, and the
+                                skip-the-line access to major attractions saved us so much time.
+                            </p>
+                            <div class="travel_testimonial_rating">
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                                <span>☆</span>
+                            </div>
+                            <div class="travel_testimonial_author">
+                                <div class="travel_author_image"
+                                    style="background-image: url('/api/placeholder/100/100');">
+                                </div>
+                                <div class="travel_author_info">
+                                    <h4 class="travel_author_name">Amanda Rodriguez</h4>
+                                    <p class="travel_author_trip">Romantic Paris Getaway</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="travel_testimonials_controls">
+                    <button class="travel_testimonial_prev">❮</button>
+                    <div class="travel_testimonial_dots"></div>
+                    <button class="travel_testimonial_next">❯</button>
+                </div>
+            </div>
+
+            <div class="travel_testimonials_cta">
+                <a href="#book-now" class="travel_primary_cta">Start Your Journey</a>
+            </div>
+        </div>
+    </section>
+    <!-- About Section HTML -->
+    <section class="travel_about_section" id="about">
+        <div class="travel_about_container">
+            <div class="travel_section_header">
+                <h2 class="travel_section_title">About TravelEscape</h2>
+                <p class="travel_section_subtitle">Crafting premium travel experiences since 2005</p>
+            </div>
+
+            <div class="travel_about_content">
+                <div class="travel_about_image_container">
+                    <div class="travel_about_image_main" style="background-image: url('/api/placeholder/700/500');">
+                    </div>
+                    <div class="travel_about_image_accent" style="background-image: url('/api/placeholder/400/300');">
+                    </div>
+                    <div class="travel_about_experience">
+                        <span class="travel_experience_number">18</span>
+                        <span class="travel_experience_text">Years of Excellence</span>
+                    </div>
+                </div>
+
+                <div class="travel_about_text">
+                    <h3 class="travel_about_heading">Your Premium Travel Partner for Unforgettable Journeys</h3>
+
+                    <p class="travel_about_paragraph">
+                        Founded in 2005, TravelEscape has grown from a small local agency to an award-winning
+                        international
+                        travel company serving over 50,000 travelers annually. Our commitment to quality, attention to
+                        detail, and personalized service has made us the preferred choice for discerning travelers
+                        around
+                        the world.
+                    </p>
+
+                    <div class="travel_about_values">
+                        <div class="travel_value_item">
+                            <div class="travel_value_icon">🌟</div>
+                            <div class="travel_value_content">
+                                <h4>Premium Experience</h4>
+                                <p>We partner exclusively with 4 and 5-star accommodations and trusted local experts to
+                                    ensure a luxury experience at every destination.</p>
+                            </div>
+                        </div>
+
+                        <div class="travel_value_item">
+                            <div class="travel_value_icon">🛡️</div>
+                            <div class="travel_value_content">
+                                <h4>100% Financial Protection</h4>
+                                <p>Your payments are secure with our ATOL and ABTA protections, ensuring complete peace
+                                    of
+                                    mind for every booking.</p>
+                            </div>
+                        </div>
+
+                        <div class="travel_value_item">
+                            <div class="travel_value_icon">👥</div>
+                            <div class="travel_value_content">
+                                <h4>Personalized Attention</h4>
+                                <p>Our travel consultants take time to understand your preferences, creating custom
+                                    itineraries tailored to your specific needs.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="travel_about_stats">
+                        <div class="travel_stat_item">
+                            <span class="travel_stat_number">50K+</span>
+                            <span class="travel_stat_label">Happy Travelers</span>
+                        </div>
+
+                        <div class="travel_stat_item">
+                            <span class="travel_stat_number">120+</span>
+                            <span class="travel_stat_label">Destinations</span>
+                        </div>
+
+                        <div class="travel_stat_item">
+                            <span class="travel_stat_number">15</span>
+                            <span class="travel_stat_label">Travel Awards</span>
+                        </div>
+
+                        <div class="travel_stat_item">
+                            <span class="travel_stat_number">98%</span>
+                            <span class="travel_stat_label">Satisfaction Rate</span>
+                        </div>
+                    </div>
+
+                    <div class="travel_about_certification">
+                        <div class="travel_certification_title">Certified & Trusted:</div>
+                        <div class="travel_certification_logos">
+                            <div class="travel_certification_logo">ABTA</div>
+                            <div class="travel_certification_logo">ATOL</div>
+                            <div class="travel_certification_logo">IATA</div>
+                            <div class="travel_certification_logo">TrustPilot</div>
+                        </div>
+                    </div>
+
+                    <div class="travel_about_ctas">
+                        <a href="#book-now" class="travel_primary_cta">Plan Your Trip</a>
+                        <a href="#" class="travel_secondary_about_cta">Our Travel Brochure</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="travel_team_section">
+                <h3 class="travel_team_heading">Meet Our Leadership</h3>
+
+                <div class="travel_team_grid">
+                    <div class="travel_team_member">
+                        <div class="travel_member_image" style="background-image: url('/api/placeholder/200/200');">
+                        </div>
+                        <h4 class="travel_member_name">Jennifer Adams</h4>
+                        <p class="travel_member_title">Founder & CEO</p>
+                        <p class="travel_member_bio">With over 25 years in luxury travel, Jennifer has personally
+                            visited 87
+                            countries and brings her passion for authentic experiences to every TravelEscape journey.
+                        </p>
+                    </div>
+
+                    <div class="travel_team_member">
+                        <div class="travel_member_image" style="background-image: url('/api/placeholder/200/200');">
+                        </div>
+                        <h4 class="travel_member_name">Michael Chen</h4>
+                        <p class="travel_member_title">Head of Destinations</p>
+                        <p class="travel_member_bio">A former tour guide and travel writer, Michael leads our team in
+                            discovering hidden gems and creating exclusive experiences our travelers won't find anywhere
+                            else.</p>
+                    </div>
+
+                    <div class="travel_team_member">
+                        <div class="travel_member_image" style="background-image: url('/api/placeholder/200/200');">
+                        </div>
+                        <h4 class="travel_member_name">Sarah Rodriguez</h4>
+                        <p class="travel_member_title">Customer Experience Director</p>
+                        <p class="travel_member_bio">Sarah ensures every client receives VIP treatment from first
+                            inquiry to
+                            post-trip follow-up, maintaining our industry-leading 98% satisfaction rate.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Gallery Section HTML -->
+    <section class="travel_gallery_section" id="gallery">
+        <div class="travel_gallery_container">
+            <div class="travel_section_header">
+                <h2 class="travel_section_title">Inspire Your Next Journey</h2>
+                <p class="travel_section_subtitle">Explore our curated gallery of breathtaking destinations</p>
+            </div>
+
+            <div class="travel_gallery_grid">
+                <!-- Gallery Item 1 -->
+                <div class="travel_gallery_item travel_gallery_item_large">
+                    <div class="travel_gallery_image" style="background-image: url('/api/placeholder/800/533');"></div>
+                    <div class="travel_gallery_overlay">
+                        <h3 class="travel_gallery_title">Santorini, Greece</h3>
+                        <p class="travel_gallery_desc">Iconic white buildings and breathtaking sunsets</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 -->
+                <div class="travel_gallery_item">
+                    <div class="travel_gallery_image" style="background-image: url('/api/placeholder/600/400');"></div>
+                    <div class="travel_gallery_overlay">
+                        <h3 class="travel_gallery_title">Bali, Indonesia</h3>
+                        <p class="travel_gallery_desc">Tropical paradise with rich culture</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3 -->
+                <div class="travel_gallery_item">
+                    <div class="travel_gallery_image" style="background-image: url('/api/placeholder/600/400');"></div>
+                    <div class="travel_gallery_overlay">
+                        <h3 class="travel_gallery_title">Kyoto, Japan</h3>
+                        <p class="travel_gallery_desc">Ancient temples and serene gardens</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 4 -->
+                <div class="travel_gallery_item">
+                    <div class="travel_gallery_image" style="background-image: url('/api/placeholder/600/400');"></div>
+                    <div class="travel_gallery_overlay">
+                        <h3 class="travel_gallery_title">Amalfi Coast, Italy</h3>
+                        <p class="travel_gallery_desc">Dramatic coastline and charming villages</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 5 -->
+                <div class="travel_gallery_item travel_gallery_item_large">
+                    <div class="travel_gallery_image" style="background-image: url('/api/placeholder/800/533');"></div>
+                    <div class="travel_gallery_overlay">
+                        <h3 class="travel_gallery_title">Machu Picchu, Peru</h3>
+                        <p class="travel_gallery_desc">Ancient Incan citadel in the clouds</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 6 -->
+                <div class="travel_gallery_item">
+                    <div class="travel_gallery_image" style="background-image: url('/api/placeholder/600/400');"></div>
+                    <div class="travel_gallery_overlay">
+                        <h3 class="travel_gallery_title">Maldives</h3>
+                        <p class="travel_gallery_desc">Overwater bungalows and crystal waters</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 7 -->
+                <div class="travel_gallery_item">
+                    <div class="travel_gallery_image" style="background-image: url('/api/placeholder/600/400');"></div>
+                    <div class="travel_gallery_overlay">
+                        <h3 class="travel_gallery_title">Paris, France</h3>
+                        <p class="travel_gallery_desc">Romantic cityscape and iconic landmarks</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 8 -->
+                <div class="travel_gallery_item">
+                    <div class="travel_gallery_image" style="background-image: url('/api/placeholder/600/400');"></div>
+                    <div class="travel_gallery_overlay">
+                        <h3 class="travel_gallery_title">Swiss Alps</h3>
+                        <p class="travel_gallery_desc">Majestic mountains and alpine villages</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="travel_gallery_cta">
+                <a href="#" class="travel_primary_cta">View All Destinations</a>
+            </div>
+        </div>
+    </section>
+    <!-- Call-to-Action Section HTML -->
+    <section class="travel_cta_section">
+        <div class="travel_cta_bg" style="background-image: url('/api/placeholder/1920/1080');"></div>
+        <div class="travel_cta_overlay"></div>
+
+        <div class="travel_cta_container">
+            <div class="travel_cta_content">
+                <h2 class="travel_cta_title">Ready for Your Next Adventure?</h2>
+                <p class="travel_cta_text">Let us help you create memories that will last a lifetime. Our travel experts
+                    are
+                    ready to craft the perfect journey tailored to your dreams.</p>
+
+                <div class="travel_cta_features">
+                    <div class="travel_cta_feature">
+                        <i class="travel_cta_icon">✓</i>
+                        <span>Personalized Itineraries</span>
+                    </div>
+                    <div class="travel_cta_feature">
+                        <i class="travel_cta_icon">✓</i>
+                        <span>24/7 Support</span>
+                    </div>
+                    <div class="travel_cta_feature">
+                        <i class="travel_cta_icon">✓</i>
+                        <span>Best Price Guarantee</span>
+                    </div>
+                </div>
+
+                <div class="travel_cta_buttons">
+                    <a href="#book-now" class="travel_cta_main_btn">Start Planning Today</a>
+                    <a href="tel:+12345678901" class="travel_cta_call_btn">
+                        <i>📞</i> Call Our Experts
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer Section HTML -->
+    <footer class="travel_footer">
+        <div class="travel_footer_container">
+            <div class="travel_footer_main">
+                <!-- Company Info Column -->
+                <div class="travel_footer_column travel_footer_company">
+                    <a href="#" class="travel_footer_logo">Travel<span>Escape</span></a>
+                    <p class="travel_footer_tagline">Your Gateway to Extraordinary Destinations Since 2005</p>
+                    <p class="travel_footer_description">
+                        We specialize in crafting premium travel experiences tailored to your unique preferences and
+                        desires. From luxurious beach getaways to cultural immersion adventures, let us create your
+                        perfect
+                        journey.
+                    </p>
+                    <div class="travel_footer_social">
+                        <a href="#" class="travel_social_icon">
+                            <span>𝕏</span>
+                        </a>
+                        <a href="#" class="travel_social_icon">
+                            <span>ƒ</span>
+                        </a>
+                        <a href="#" class="travel_social_icon">
+                            <span>ⓘ</span>
+                        </a>
+                        <a href="#" class="travel_social_icon">
+                            <span>▶</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links Column -->
+                <div class="travel_footer_column">
+                    <h3 class="travel_footer_heading">Quick Links</h3>
+                    <ul class="travel_footer_links">
+                        <li><a href="#book-now">Book Now</a></li>
+                        <li><a href="#packages">Destinations</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#">Travel Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Travel Types Column -->
+                <div class="travel_footer_column">
+                    <h3 class="travel_footer_heading">Travel Types</h3>
+                    <ul class="travel_footer_links">
+                        <li><a href="#">Luxury Escapes</a></li>
+                        <li><a href="#">Family Vacations</a></li>
+                        <li><a href="#">Honeymoon Packages</a></li>
+                        <li><a href="#">Adventure Tours</a></li>
+                        <li><a href="#">Cruise Packages</a></li>
+                        <li><a href="#">Cultural Experiences</a></li>
+                        <li><a href="#">Group Travel</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Column -->
+                <div class="travel_footer_column travel_footer_contact">
+                    <h3 class="travel_footer_heading">Contact Us</h3>
+                    <ul class="travel_footer_contact_list">
+                        <li>
+                            <i class="travel_contact_icon">📍</i>
+                            <div>
+                                <span>123 Travel Way, Suite 400</span>
+                                <span>New York, NY 10001</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="travel_contact_icon">📞</i>
+                            <div>
+                                <a href="tel:+12345678901">+1 (234) 567-8901</a>
+                                <span>Mon-Fri: 9AM-6PM</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="travel_contact_icon">✉️</i>
+                            <div>
+                                <a href="mailto:info@travelescape.com">info@travelescape.com</a>
+                                <span>24/7 Email Support</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="#book-now" class="travel_footer_cta">Book Your Trip</a>
+                </div>
+            </div>
+
+            <!-- Awards and Accreditations -->
+            <div class="travel_footer_awards">
+                <div class="travel_award_item">IATA</div>
+                <div class="travel_award_item">ATOL</div>
+                <div class="travel_award_item">ABTA</div>
+                <div class="travel_award_item">Travel Award 2024</div>
+                <div class="travel_award_item">TrustPilot 4.9/5</div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="travel_footer_bottom">
+                <div class="travel_footer_copyright">
+                    &copy; 2005-2025 TravelEscape. All Rights Reserved.
+                </div>
+                <div class="travel_footer_legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+
+            <!-- Newsletter Popup Toggle -->
+            <button class="travel_newsletter_toggle">
+                Subscribe to Newsletter <span>↑</span>
+            </button>
+
+            <!-- Newsletter Popup -->
+            <div class="travel_newsletter_popup">
+                <form class="travel_newsletter_form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const travelNavbar = document.querySelector('.travel_navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                travelNavbar.classList.add('scrolled');
+            } else {
+                travelNavbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const travelMobileMenuBtn = document.querySelector('.travel_mobile_menu_btn');
+        const travelNavLinks = document.querySelector('.travel_nav_links');
+
+        travelMobileMenuBtn.addEventListener('click', () => {
+            travelNavLinks.classList.toggle('active');
+            travelMobileMenuBtn.textContent = travelNavLinks.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close mobile menu when clicking on a link
+        const travelNavLinksItems = document.querySelectorAll('.travel_nav_link, .travel_nav_cta');
+        travelNavLinksItems.forEach(link => {
+            link.addEventListener('click', () => {
+                if (travelNavLinks.classList.contains('active')) {
+                    travelNavLinks.classList.remove('active');
+                    travelMobileMenuBtn.textContent = '☰';
+                }
+            });
+        });
+
+        // Background slider functionality
+        const travelBgSlides = document.querySelectorAll('.travel_bg_slide');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            travelBgSlides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % travelBgSlides.length;
+            travelBgSlides[currentSlide].classList.add('active');
+        }
+
+        // Change slide every 5 seconds
+        setInterval(nextSlide, 5000);
+
+        // Set min date for date inputs to today
+        const travelCheckIn = document.getElementById('travel_check_in');
+        const travelCheckOut = document.getElementById('travel_check_out');
+
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+
+        const formattedToday = `${yyyy}-${mm}-${dd}`;
+
+        travelCheckIn.setAttribute('min', formattedToday);
+        travelCheckOut.setAttribute('min', formattedToday);
+
+        // Update check-out min date when check-in changes
+        travelCheckIn.addEventListener('change', () => {
+            travelCheckOut.setAttribute('min', travelCheckIn.value);
+            if (travelCheckOut.value && travelCheckOut.value < travelCheckIn.value) {
+                travelCheckOut.value = travelCheckIn.value;
+            }
+        });
+
+        // Form submission
+        const travelBookingForm = document.querySelector('.travel_booking_form');
+        travelBookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Here you would typically send the form data to your server
+            // For this example, we'll just show an alert
+            alert('Thank you for your submission! We will get back to you with a quote shortly.');
+
+            // Optional: Reset the form
+            travelBookingForm.reset();
+        });
+    </script>
+
+    <script>
+        // Testimonials Slider Functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get slider elements
+            const track = document.querySelector('.travel_testimonials_track');
+            const slides = document.querySelectorAll('.travel_testimonial_slide');
+            const prevButton = document.querySelector('.travel_testimonial_prev');
+            const nextButton = document.querySelector('.travel_testimonial_next');
+            const dotsContainer = document.querySelector('.travel_testimonial_dots');
+
+            let currentSlide = 0;
+            let slideWidth = 0;
+            let maxSlide = 0;
+            let slidesToShow = 1;
+            let autoplayInterval;
+
+            // Create dots based on number of slides
+            function createDots() {
+                dotsContainer.innerHTML = '';
+                const totalDots = Math.ceil(slides.length / slidesToShow);
+
+                for (let i = 0; i < totalDots; i++) {
+                    const dot = document.createElement('div');
+                    dot.classList.add('travel_testimonial_dot');
+                    if (i === 0) dot.classList.add('active');
+
+                    dot.addEventListener('click', () => {
+                        goToSlide(i * slidesToShow);
+                    });
+
+                    dotsContainer.appendChild(dot);
+                }
+            }
+
+            // Initialize slider
+            function initSlider() {
+                // Determine number of slides to show based on screen width
+                if (window.innerWidth >= 992) {
+                    slidesToShow = 3;
+                } else if (window.innerWidth >= 768) {
+                    slidesToShow = 2;
+                } else {
+                    slidesToShow = 1;
+                }
+
+                // Calculate slide width and max slide
+                slideWidth = 100 / slidesToShow;
+                maxSlide = Math.max(0, slides.length - slidesToShow);
+
+                // Set width for each slide
+                slides.forEach(slide => {
+                    slide.style.minWidth = `${slideWidth}%`;
+                });
+
+                // Reset to first slide
+                currentSlide = 0;
+                updateSliderPosition();
+
+                // Create pagination dots
+                createDots();
+
+                // Start autoplay
+                startAutoplay();
+            }
+
+            // Update slider position
+            function updateSliderPosition() {
+                track.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+
+                // Update active dot
+                const activeDotIndex = Math.floor(currentSlide / slidesToShow);
+                const dots = document.querySelectorAll('.travel_testimonial_dot');
+
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === activeDotIndex);
+                });
+            }
+
+            // Go to specific slide
+            function goToSlide(index) {
+                currentSlide = Math.min(maxSlide, Math.max(0, index));
+                updateSliderPosition();
+                resetAutoplay();
+            }
+
+            // Go to next slide
+            function nextSlide() {
+                if (currentSlide < maxSlide) {
+                    currentSlide++;
+                } else {
+                    currentSlide = 0; // Loop back to first slide
+                }
+                updateSliderPosition();
+                resetAutoplay();
+            }
+
+            // Go to previous slide
+            function prevSlide() {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                } else {
+                    currentSlide = maxSlide; // Loop to last slide
+                }
+                updateSliderPosition();
+                resetAutoplay();
+            }
+
+            // Start autoplay
+            function startAutoplay() {
+                clearInterval(autoplayInterval);
+                autoplayInterval = setInterval(nextSlide, 5000);
+            }
+
+            // Reset autoplay
+            function resetAutoplay() {
+                clearInterval(autoplayInterval);
+                startAutoplay();
+            }
+
+            // Event listeners
+            prevButton.addEventListener('click', prevSlide);
+            nextButton.addEventListener('click', nextSlide);
+
+            // Initialize slider on load
+            initSlider();
+
+            // Update slider on window resize
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(initSlider, 200);
+            });
+
+            // Pause autoplay on hover
+            track.addEventListener('mouseenter', () => {
+                clearInterval(autoplayInterval);
+            });
+
+            // Resume autoplay on mouse leave
+            track.addEventListener('mouseleave', startAutoplay);
+
+            // Touch events for mobile swipe
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            track.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            track.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    nextSlide(); // Swipe left
+                } else if (touchEndX > touchStartX + swipeThreshold) {
+                    prevSlide(); // Swipe right
+                }
+            }
+        });
+    </script>
+
+    <script>
+        // Initialize gallery hover effects
+        document.addEventListener('DOMContentLoaded', function () {
+            const galleryItems = document.querySelectorAll('.travel_gallery_item');
+
+            galleryItems.forEach(item => {
+                // Add touch support for mobile devices
+                item.addEventListener('touchstart', function () {
+                    this.classList.add('touch-hover');
+                }, { passive: true });
+
+                // Remove hover effect after touch ends
+                item.addEventListener('touchend', function () {
+                    setTimeout(() => {
+                        this.classList.remove('touch-hover');
+                    }, 500);
+                }, { passive: true });
+            });
+        });
+    </script>
+    <!-- JavaScript for Newsletter Toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const newsletterToggle = document.querySelector('.travel_newsletter_toggle');
+            const newsletterPopup = document.querySelector('.travel_newsletter_popup');
+
+            newsletterToggle.addEventListener('click', function () {
+                newsletterPopup.classList.toggle('active');
+                newsletterToggle.classList.toggle('active');
+            });
+
+            // Close newsletter on submission
+            const newsletterForm = document.querySelector('.travel_newsletter_form');
+            newsletterForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                alert('Thank you for subscribing to our newsletter!');
+                newsletterPopup.classList.remove('active');
+                newsletterToggle.classList.remove('active');
+                newsletterForm.reset();
+            });
+        });
+    </script>
+</body>
+
+</html>
