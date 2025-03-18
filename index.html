@@ -337,6 +337,7 @@
         }
 
         /* Hero Section Styles */
+        /* Hero Section Styles */
         .travel_hero_section {
             height: 100vh;
             width: 100%;
@@ -389,12 +390,14 @@
             display: flex;
             align-items: center;
             padding: 0 2rem;
+            position: relative;
         }
 
         .travel_hero_content {
             flex: 1;
             color: white;
             padding-right: 3rem;
+            z-index: 1;
         }
 
         .travel_hero_tagline {
@@ -402,30 +405,33 @@
             color: #ff6b35;
             margin-bottom: 1rem;
             letter-spacing: 1px;
+            font-weight: 500;
         }
 
         .travel_hero_title {
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 800;
             margin-bottom: 1rem;
             line-height: 1.2;
         }
 
         .travel_hero_description {
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 1.5vw, 1.1rem);
             margin-bottom: 2rem;
             line-height: 1.6;
             max-width: 600px;
+            opacity: 0.9;
         }
 
         .travel_hero_ctas {
             display: flex;
             gap: 1rem;
             margin-bottom: 3rem;
+            flex-wrap: wrap;
         }
 
         .travel_primary_cta {
-            background-color: #ff6b35;
+            background-color: #03c600;
             color: white;
             padding: 1rem 2rem;
             border-radius: 50px;
@@ -433,7 +439,8 @@
             text-decoration: none;
             transition: all 0.3s ease;
             display: inline-block;
-            border: 2px solid #ff6b35;
+            border: 2px solid #00bd35;
+            font-size: clamp(0.9rem, 1vw, 1rem);
         }
 
         .travel_primary_cta:hover {
@@ -451,6 +458,7 @@
             transition: all 0.3s ease;
             display: inline-block;
             border: 2px solid white;
+            font-size: clamp(0.9rem, 1vw, 1rem);
         }
 
         .travel_secondary_cta:hover {
@@ -462,6 +470,7 @@
             display: flex;
             align-items: center;
             gap: 2rem;
+            flex-wrap: wrap;
         }
 
         .travel_trust_item {
@@ -478,6 +487,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 0.8rem;
         }
 
         .travel_trust_text {
@@ -493,6 +503,7 @@
             border-radius: 10px;
             padding: 2rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 1;
         }
 
         .travel_form_title {
@@ -579,30 +590,50 @@
             border-radius: 5px;
             border-left: 3px solid #ff6b35;
             margin-top: 2rem;
+            max-width: 600px;
         }
 
         .travel_testimonial_text {
             font-style: italic;
             margin-bottom: 0.5rem;
+            font-size: clamp(0.9rem, 1vw, 1rem);
         }
 
         .travel_testimonial_author {
             font-weight: 600;
+            font-size: clamp(0.9rem, 1vw, 1rem);
         }
 
-        /* Responsive Styles */
+        /* Responsive Styles - Desktop First Approach */
+        @media (max-width: 1200px) {
+            .travel_hero_container {
+                padding: 0 4%;
+            }
+
+            .travel_hero_content {
+                padding-right: 2rem;
+            }
+        }
+
         @media (max-width: 991px) {
+            .travel_hero_section {
+                height: auto;
+                min-height: 100vh;
+            }
+
             .travel_hero_container {
                 flex-direction: column;
                 padding-top: 2rem;
                 height: auto;
                 min-height: calc(100vh - 80px);
+                justify-content: center;
+                gap: 3rem;
             }
 
             .travel_hero_content {
                 padding-right: 0;
-                margin-bottom: 2rem;
                 text-align: center;
+                order: 1;
             }
 
             .travel_hero_description {
@@ -620,11 +651,24 @@
             .travel_form_container {
                 width: 100%;
                 max-width: 500px;
-                margin: 0 auto 3rem;
+                margin: 0 auto;
+                order: 2;
+            }
+
+            .travel_testimonial {
+                margin: 2rem auto 0;
             }
         }
 
         @media (max-width: 768px) {
+            .travel_hero_section {
+                padding-top: 60px;
+            }
+
+            .travel_hero_container {
+                padding: 2rem 1.5rem;
+            }
+
             .travel_nav_links {
                 position: fixed;
                 top: 80px;
@@ -661,19 +705,94 @@
                 display: block;
             }
 
-            .travel_hero_title {
-                font-size: 2.5rem;
-            }
-
             .travel_hero_tagline {
                 font-size: 1rem;
             }
 
-            .travel_trust_indicators {
+            .travel_hero_ctas {
                 flex-direction: column;
                 gap: 1rem;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto 2rem;
+            }
+
+            .travel_primary_cta,
+            .travel_secondary_cta {
+                width: 100%;
+                text-align: center;
+            }
+
+            .travel_trust_indicators {
+                flex-direction: column;
+                gap: 0.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .travel_form_container {
+                padding: 1.5rem;
+            }
+
+            .travel_form_row {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .travel_testimonial {
+                padding: 0.8rem;
             }
         }
+
+        @media (max-width: 480px) {
+            .travel_hero_section {
+                padding-top: 50px;
+            }
+
+            .travel_hero_container {
+                padding: 1.5rem 1rem;
+            }
+
+            .travel_hero_title {
+                margin-bottom: 0.8rem;
+            }
+
+            .travel_hero_description {
+                margin-bottom: 1.5rem;
+            }
+
+            .travel_form_title {
+                font-size: 1.5rem;
+            }
+
+            .travel_form_subtitle {
+                font-size: 0.9rem;
+            }
+
+            .travel_form_label {
+                font-size: 0.9rem;
+            }
+
+            .travel_form_input,
+            .travel_form_select {
+                padding: 0.7rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .travel_form_submit {
+                padding: 0.8rem;
+            }
+        }
+
+        /* Fix for iPhone and other mobile devices with notches */
+        @supports (padding: max(0px)) {
+            .travel_hero_section {
+                padding-left: max(2rem, env(safe-area-inset-left));
+                padding-right: max(2rem, env(safe-area-inset-right));
+                padding-top: max(80px, env(safe-area-inset-top));
+            }
+        }
+
+        /* Add JavaScript functionality for background slider */
     </style>
 
     <style>
@@ -1579,10 +1698,10 @@
     <style>
         /* Footer Styles */
         .travel_footer {
-            background-color: #1e2639;
-            color: #f5f5f5;
-            padding: 4rem 0 0;
-            position: relative;
+            background-color: #222;
+            color: #fff;
+            padding: 4rem 0 2rem;
+            font-family: inherit;
         }
 
         .travel_footer_container {
@@ -1591,351 +1710,194 @@
             padding: 0 2rem;
         }
 
-        .travel_footer_main {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1.5fr;
-            gap: 2.5rem;
-            padding-bottom: 3rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        .travel_footer_top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
 
-        /* Company Info Column */
-        .travel_footer_company {
-            padding-right: 2rem;
+        .travel_footer_brand {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
         .travel_footer_logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #fff;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 1rem;
-        }
-
-        .travel_footer_logo span {
-            color: #ff6b35;
-        }
-
-        .travel_footer_tagline {
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            color: #ff6b35;
-            font-weight: 500;
-        }
-
-        .travel_footer_description {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 1.5rem;
-        }
-
-        .travel_footer_social {
-            display: flex;
-            gap: 0.8rem;
-        }
-
-        .travel_social_icon {
-            width: 36px;
-            height: 36px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
         }
 
-        .travel_social_icon:hover {
-            background-color: #ff6b35;
-            transform: translateY(-3px);
-        }
-
-        /* Links Columns */
-        .travel_footer_heading {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 1.2rem;
-            color: white;
+        .travel_logo_text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0.5px;
             position: relative;
-            padding-bottom: 0.5rem;
         }
 
-        .travel_footer_heading::after {
+        .travel_logo_text:after {
             content: "";
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 40px;
+            display: block;
+            width: 20px;
             height: 2px;
             background-color: #ff6b35;
+            position: absolute;
+            bottom: 0;
+            left: 0;
         }
 
-        .travel_footer_links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .travel_footer_links li {
-            margin-bottom: 0.7rem;
-        }
-
-        .travel_footer_links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
+        .travel_footer_motto {
             font-size: 0.9rem;
-            transition: color 0.3s ease, transform 0.3s ease;
-            display: inline-block;
+            color: #ccc;
+            font-style: italic;
+            margin-top: 0.5rem;
         }
 
-        .travel_footer_links a:hover {
-            color: #ff6b35;
-            transform: translateX(5px);
-        }
-
-        /* Contact Column */
-        .travel_footer_contact_list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .travel_footer_contact_list li {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1.2rem;
-        }
-
-        .travel_contact_icon {
-            font-size: 1.2rem;
-            color: #ff6b35;
-            flex-shrink: 0;
-        }
-
-        .travel_footer_contact_list div {
+        .travel_footer_reviews {
             display: flex;
             flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .travel_footer_contact_list a {
-            color: rgba(255, 255, 255, 0.9);
-            text-decoration: none;
-            transition: color 0.3s ease;
+        .travel_reviews_stars {
+            display: flex;
+            gap: 2px;
         }
 
-        .travel_footer_contact_list a:hover {
+        .travel_star {
             color: #ff6b35;
+            font-size: 1.2rem;
         }
 
-        .travel_footer_contact_list span {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.6);
+        .travel_reviews_count {
+            font-size: 0.9rem;
+            color: #ccc;
         }
 
-        .travel_footer_cta {
+        .travel_footer_contact {
+            display: flex;
+            align-items: center;
+        }
+
+        .travel_contact_link {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
             background-color: #ff6b35;
             color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            font-weight: 600;
             text-decoration: none;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-top: 0.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .travel_footer_cta:hover {
-            background-color: #e55a2b;
-            transform: translateY(-3px);
-        }
-
-        /* Awards Section */
-        .travel_footer_awards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.5rem;
-            padding: 1.5rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .travel_award_item {
-            background-color: rgba(255, 255, 255, 0.05);
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            font-size: 0.85rem;
+            border-radius: 50px;
             font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 2px solid #ff6b35;
         }
 
-        /* Footer Bottom */
+        .travel_contact_link:hover {
+            background-color: transparent;
+            color: #fff;
+        }
+
+        .travel_footer_divider {
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin: 2rem 0;
+        }
+
         .travel_footer_bottom {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 0;
             flex-wrap: wrap;
             gap: 1rem;
         }
 
-        .travel_footer_copyright {
+        .travel_copyright {
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.6);
+            color: #999;
         }
 
-        .travel_footer_legal {
+        .travel_footer_links {
             display: flex;
             gap: 1.5rem;
         }
 
-        .travel_footer_legal a {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.6);
+        .travel_footer_link {
+            color: #999;
             text-decoration: none;
+            font-size: 0.85rem;
             transition: color 0.3s ease;
         }
 
-        .travel_footer_legal a:hover {
+        .travel_footer_link:hover {
             color: #ff6b35;
         }
 
-        /* Newsletter Toggle and Popup */
-        .travel_newsletter_toggle {
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #ff6b35;
-            color: white;
-            border: none;
-            padding: 0.5rem 1.5rem;
-            border-radius: 5px 5px 0 0;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .travel_newsletter_toggle span {
-            transition: transform 0.3s ease;
-        }
-
-        .travel_newsletter_toggle.active span {
-            transform: rotate(180deg);
-        }
-
-        .travel_newsletter_popup {
-            background-color: rgba(255, 255, 255, 0.03);
-            width: 100%;
-            padding: 1rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            display: none;
-        }
-
-        .travel_newsletter_popup.active {
-            display: block;
-        }
-
-        .travel_newsletter_form {
-            max-width: 500px;
-            margin: 0 auto;
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .travel_newsletter_form input {
-            flex: 1;
-            padding: 0.7rem 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 5px;
-            color: white;
-            font-size: 0.9rem;
-        }
-
-        .travel_newsletter_form input:focus {
-            outline: none;
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .travel_newsletter_form button {
-            background-color: #ff6b35;
-            color: white;
-            border: none;
-            padding: 0 1.5rem;
-            border-radius: 5px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .travel_newsletter_form button:hover {
-            background-color: #e55a2b;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 1024px) {
-            .travel_footer_main {
-                grid-template-columns: 1fr 1fr;
+        /* Responsive styles */
+        @media (max-width: 991px) {
+            .travel_footer_top {
+                justify-content: center;
+                text-align: center;
             }
 
-            .travel_footer_company {
-                grid-column: span 2;
-                padding-right: 0;
-                margin-bottom: 1rem;
+            .travel_footer_brand {
+                align-items: center;
+            }
+
+            .travel_logo_text:after {
+                left: 50%;
+                transform: translateX(-50%);
             }
         }
 
         @media (max-width: 768px) {
             .travel_footer {
-                padding-top: 3rem;
+                padding: 3rem 0 1.5rem;
             }
 
-            .travel_footer_main {
-                grid-template-columns: 1fr;
+            .travel_footer_top {
+                flex-direction: column;
                 gap: 2rem;
-            }
-
-            .travel_footer_company {
-                grid-column: span 1;
             }
 
             .travel_footer_bottom {
                 flex-direction: column;
-                align-items: center;
+                gap: 1rem;
                 text-align: center;
             }
 
-            .travel_footer_legal {
+            .travel_footer_links {
                 justify-content: center;
             }
         }
 
-        @media (max-width: 576px) {
-            .travel_footer_awards {
-                gap: 0.8rem;
+        @media (max-width: 480px) {
+            .travel_footer {
+                padding: 2rem 0 1rem;
             }
 
-            .travel_award_item {
-                font-size: 0.75rem;
-                padding: 0.4rem 0.8rem;
-            }
-
-            .travel_footer_legal {
-                flex-direction: column;
-                gap: 0.8rem;
-            }
-
-            .travel_newsletter_form {
-                flex-direction: column;
+            .travel_footer_container {
                 padding: 0 1rem;
+            }
+
+            .travel_logo_text {
+                font-size: 1.5rem;
+            }
+
+            .travel_footer_links {
+                gap: 1rem;
+            }
+        }
+
+        /* Fix for iPhone and other mobile devices with notches */
+        @supports (padding: max(0px)) {
+            .travel_footer_container {
+                padding-left: max(2rem, env(safe-area-inset-left));
+                padding-right: max(2rem, env(safe-area-inset-right));
+                padding-bottom: max(2rem, env(safe-area-inset-bottom));
             }
         }
     </style>
@@ -1985,7 +1947,7 @@
                     beaches to majestic mountains, we have something for every traveler.
                 </p>
                 <div class="travel_hero_ctas">
-                    <a href="#book-now" class="travel_primary_cta">Book Your Trip</a>
+                    <a href="#book-now" class="travel_primary_cta">Know more</a>
                     <a href="#packages" class="travel_secondary_cta">Explore Packages</a>
                 </div>
                 <div class="travel_trust_indicators">
@@ -2021,7 +1983,7 @@
                     Get a personalized quote in just a few clicks
                 </p>
                 <form class="travel_booking_form">
-                    <div class="travel_form_group">
+                    <!-- <div class="travel_form_group">
                         <label for="travel_destination" class="travel_form_label">Destination</label>
                         <select id="travel_destination" class="travel_form_select">
                             <option value="">Select Destination</option>
@@ -2031,8 +1993,8 @@
                             <option value="tokyo">Tokyo, Japan</option>
                             <option value="maldives">Maldives</option>
                         </select>
-                    </div>
-                    <div class="travel_form_row">
+                    </div> -->
+                    <!-- <div class="travel_form_row">
                         <div class="travel_form_col">
                             <div class="travel_form_group">
                                 <label for="travel_check_in" class="travel_form_label">Check In</label>
@@ -2045,21 +2007,9 @@
                                 <input type="date" id="travel_check_out" class="travel_form_input" />
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="travel_form_row">
-                        <div class="travel_form_col">
-                            <div class="travel_form_group">
-                                <label for="travel_adults" class="travel_form_label">Adults</label>
-                                <select id="travel_adults" class="travel_form_select">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5+">5+</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="travel_form_col">
+                        <!-- <div class="travel_form_col">
                             <div class="travel_form_group">
                                 <label for="travel_children" class="travel_form_label">Children</label>
                                 <select id="travel_children" class="travel_form_select">
@@ -2070,16 +2020,37 @@
                                     <option value="4+">4+</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="travel_form_group">
-                        <label for="travel_name" class="travel_form_label">Full Name</label>
+                        <label for="travel_name" class="travel_form_label">Full name</label>
                         <input type="text" id="travel_name" class="travel_form_input" placeholder="Your full name" />
                     </div>
                     <div class="travel_form_group">
                         <label for="travel_email" class="travel_form_label">Email</label>
                         <input type="email" id="travel_email" class="travel_form_input"
                             placeholder="Your email address" />
+                    </div>
+                    <div class="travel_form_group">
+                        <label for="travel_email" class="travel_form_label">Phone</label>
+                        <input type="number" id="travel_email" class="travel_form_input"
+                            placeholder="Your phone number" />
+                    </div>
+                    <div class="travel_form_group">
+                        <label for="travel_name" class="travel_form_label">City</label>
+                        <input type="text" id="travel_name" class="travel_form_input" placeholder="Your city name" />
+                    </div>
+                    <div class="travel_form_col">
+                        <div class="travel_form_group">
+                            <label for="travel_adults" class="travel_form_label">No. of Person</label>
+                            <select id="travel_adults" class="travel_form_select">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5+">5+</option>
+                            </select>
+                        </div>
                     </div>
                     <button type="submit" class="travel_form_submit">
                         Get Your Free Quote
@@ -2101,7 +2072,7 @@
             <div class="travel_packages_grid">
                 <!-- Package Card 1 -->
                 <div class="travel_package_card">
-                    <div class="travel_package_image" style="background-image: url(images/amarnath.jpg)"></div>
+                    <div class="travel_package_image" style="background-image: url(assets/amarnath.jpg)"></div>
                     <div class="travel_package_location">
                         <i class="travel_location_icon">📍</i>
                         <span>Sonmarg, India</span>
@@ -2150,7 +2121,7 @@
 
                 <!-- Package Card 2 -->
                 <div class="travel_package_card">
-                    <div class="travel_package_image" style="background-image: url(images/leh.jpg)"></div>
+                    <div class="travel_package_image" style="background-image: url(assets/leh.jpg)"></div>
                     <div class="travel_package_location">
                         <i class="travel_location_icon">📍</i>
                         <span>Leh-Ladakh, India</span>
@@ -2199,7 +2170,7 @@
 
                 <!-- Package Card 3 -->
                 <div class="travel_package_card">
-                    <div class="travel_package_image" style="background-image: url(images/vaishnodevi.jpg)"></div>
+                    <div class="travel_package_image" style="background-image: url(assets/vaishnodevi.jpg)"></div>
                     <div class="travel_package_location">
                         <i class="travel_location_icon">📍</i>
                         <span>Katra, India</span>
@@ -2248,7 +2219,7 @@
 
                 <!-- Package Card 4 -->
                 <div class="travel_package_card">
-                    <div class="travel_package_image" style="background-image: url(images/kashmir.jpg)"></div>
+                    <div class="travel_package_image" style="background-image: url(assets/kashmir.jpg)"></div>
                     <div class="travel_package_location">
                         <i class="travel_location_icon">📍</i>
                         <span>Kashmir Valley, India</span>
@@ -2297,7 +2268,7 @@
 
                 <!-- Package Card 5 -->
                 <div class="travel_package_card">
-                    <div class="travel_package_image" style="background-image: url(images/gulmarg.jpg)"></div>
+                    <div class="travel_package_image" style="background-image: url(assets/gulmarg.jpg)"></div>
                     <div class="travel_package_location">
                         <i class="travel_location_icon">📍</i>
                         <span>Gulmarg, India</span>
@@ -2346,7 +2317,7 @@
 
                 <!-- Package Card 6 -->
                 <div class="travel_package_card">
-                    <div class="travel_package_image" style="background-image: url(images/pahalgam.jpg)"></div>
+                    <div class="travel_package_image" style="background-image: url(assets/pahalgam.jpg)"></div>
                     <div class="travel_package_location">
                         <i class="travel_location_icon">📍</i>
                         <span>Pahalgam, India</span>
@@ -2394,7 +2365,7 @@
                 </div>
                 <!-- Package Card 7 -->
                 <div class="travel_package_card">
-                    <div class="travel_package_image" style="background-image: url(images/tulip2.jpg)"></div>
+                    <div class="travel_package_image" style="background-image: url(assets/tulip2.jpg)"></div>
                     <div class="travel_package_location">
                         <i class="travel_location_icon">📍</i>
                         <span>Srinagar, India</span>
@@ -2443,7 +2414,7 @@
 
                 <!-- Package Card 8 -->
                 <div class="travel_package_card">
-                    <div class="travel_package_image" style="background-image: url(images/tulip1.jpg)"></div>
+                    <div class="travel_package_image" style="background-image: url(assets/tulip1.jpg)"></div>
                     <div class="travel_package_location">
                         <i class="travel_location_icon">📍</i>
                         <span>Kashmir Valley, India</span>
@@ -2925,13 +2896,13 @@
                 </div>
             </div>
 
-            <div class="travel_gallery_cta">
+            <!-- <div class="travel_gallery_cta">
                 <a href="#" class="travel_primary_cta">View All Destinations</a>
-            </div>
+            </div> -->
         </div>
     </section>
     <!-- Call-to-Action Section HTML -->
-    <section class="travel_cta_section">
+    <!-- <section class="travel_cta_section">
         <div class="travel_cta_bg" style="background-image: url('/api/placeholder/1920/1080')"></div>
         <div class="travel_cta_overlay"></div>
 
@@ -2967,129 +2938,46 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- Footer Section HTML -->
     <footer class="travel_footer">
         <div class="travel_footer_container">
-            <div class="travel_footer_main">
-                <!-- Company Info Column -->
-                <div class="travel_footer_column travel_footer_company">
-                    <a href="#" class="travel_footer_logo">Travel<span>Escape</span></a>
-                    <p class="travel_footer_tagline">
-                        Your Gateway to Extraordinary Destinations Since 2005
-                    </p>
-                    <p class="travel_footer_description">
-                        We specialize in crafting premium travel experiences tailored to
-                        your unique preferences and desires. From luxurious beach getaways
-                        to cultural immersion adventures, let us create your perfect
-                        journey.
-                    </p>
-                    <div class="travel_footer_social">
-                        <a href="#" class="travel_social_icon">
-                            <span>𝕏</span>
-                        </a>
-                        <a href="#" class="travel_social_icon">
-                            <span>ƒ</span>
-                        </a>
-                        <a href="#" class="travel_social_icon">
-                            <span>ⓘ</span>
-                        </a>
-                        <a href="#" class="travel_social_icon">
-                            <span>▶</span>
-                        </a>
+            <div class="travel_footer_top">
+                <div class="travel_footer_brand">
+                    <div class="travel_footer_logo">
+                        <!-- Logo placeholder - replace with your actual logo -->
+                        <div class="travel_logo_text">TravelEscape</div>
                     </div>
+                    <div class="travel_footer_motto">"Journeys that transform, memories that last"</div>
                 </div>
 
-                <!-- Quick Links Column -->
-                <div class="travel_footer_column">
-                    <h3 class="travel_footer_heading">Quick Links</h3>
-                    <ul class="travel_footer_links">
-                        <li><a href="#book-now">Book Now</a></li>
-                        <li><a href="#packages">Destinations</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#reviews">Reviews</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#">Travel Blog</a></li>
-                        <li><a href="#">Careers</a></li>
-                    </ul>
+                <div class="travel_footer_reviews">
+                    <div class="travel_reviews_stars">
+                        <span class="travel_star">★</span>
+                        <span class="travel_star">★</span>
+                        <span class="travel_star">★</span>
+                        <span class="travel_star">★</span>
+                        <span class="travel_star">★</span>
+                    </div>
+                    <div class="travel_reviews_count">4.9/5 from over 2,000 travelers</div>
                 </div>
 
-                <!-- Travel Types Column -->
-                <div class="travel_footer_column">
-                    <h3 class="travel_footer_heading">Travel Types</h3>
-                    <ul class="travel_footer_links">
-                        <li><a href="#">Luxury Escapes</a></li>
-                        <li><a href="#">Family Vacations</a></li>
-                        <li><a href="#">Honeymoon Packages</a></li>
-                        <li><a href="#">Adventure Tours</a></li>
-                        <li><a href="#">Cruise Packages</a></li>
-                        <li><a href="#">Cultural Experiences</a></li>
-                        <li><a href="#">Group Travel</a></li>
-                    </ul>
-                </div>
-
-                <!-- Contact Column -->
-                <div class="travel_footer_column travel_footer_contact">
-                    <h3 class="travel_footer_heading">Contact Us</h3>
-                    <ul class="travel_footer_contact_list">
-                        <li>
-                            <i class="travel_contact_icon">📍</i>
-                            <div>
-                                <span>123 Travel Way, Suite 400</span>
-                                <span>New York, NY 10001</span>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="travel_contact_icon">📞</i>
-                            <div>
-                                <a href="tel:+12345678901">+1 (234) 567-8901</a>
-                                <span>Mon-Fri: 9AM-6PM</span>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="travel_contact_icon">✉️</i>
-                            <div>
-                                <a href="mailto:info@travelescape.com">info@travelescape.com</a>
-                                <span>24/7 Email Support</span>
-                            </div>
-                        </li>
-                    </ul>
-                    <a href="#book-now" class="travel_footer_cta">Book Your Trip</a>
+                <div class="travel_footer_contact">
+                    <a href="#contact-form" class="travel_contact_link">Contact Us</a>
                 </div>
             </div>
 
-            <!-- Awards and Accreditations -->
-            <div class="travel_footer_awards">
-                <div class="travel_award_item">IATA</div>
-                <div class="travel_award_item">ATOL</div>
-                <div class="travel_award_item">ABTA</div>
-                <div class="travel_award_item">Travel Award 2024</div>
-                <div class="travel_award_item">TrustPilot 4.9/5</div>
-            </div>
+            <div class="travel_footer_divider"></div>
 
-            <!-- Footer Bottom -->
             <div class="travel_footer_bottom">
-                <div class="travel_footer_copyright">
-                    &copy; 2005-2025 TravelEscape. All Rights Reserved.
+                <div class="travel_copyright">
+                    © 2025 TravelEscape. All rights reserved.
                 </div>
-                <div class="travel_footer_legal">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms & Conditions</a>
-                    <a href="#">Cookie Policy</a>
+                <div class="travel_footer_links">
+                    <a href="#privacy" class="travel_footer_link">Privacy</a>
+                    <a href="#terms" class="travel_footer_link">Terms</a>
+                    <a href="#sitemap" class="travel_footer_link">Sitemap</a>
                 </div>
-            </div>
-
-            <!-- Newsletter Popup Toggle -->
-            <button class="travel_newsletter_toggle">
-                Subscribe to Newsletter <span>↑</span>
-            </button>
-
-            <!-- Newsletter Popup -->
-            <div class="travel_newsletter_popup">
-                <form class="travel_newsletter_form">
-                    <input type="email" placeholder="Your email address" required />
-                    <button type="submit">Subscribe</button>
-                </form>
             </div>
         </div>
     </footer>
