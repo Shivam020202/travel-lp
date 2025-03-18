@@ -2856,7 +2856,7 @@
                 <!-- Gallery Item 5 -->
                 <div class="travel_gallery_item travel_gallery_item_large">
                     <div class="travel_gallery_image"
-                        style="background-image: url('https://images.unsplash.com/photo-1623612175509-30e97f5aa195?q=80&w=3135&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+                        style="background-image: url('https://images.unsplash.com/photo-1594640614203-436526f3d980?q=80&w=2946&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
                     </div>
                     <div class="travel_gallery_overlay">
                         <h3 class="travel_gallery_title">Pangong Lake</h3>
@@ -3288,34 +3288,7 @@
             });
         });
     </script>
-    <!-- JavaScript for Newsletter Toggle -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const newsletterToggle = document.querySelector(
-                ".travel_newsletter_toggle"
-            );
-            const newsletterPopup = document.querySelector(
-                ".travel_newsletter_popup"
-            );
 
-            newsletterToggle.addEventListener("click", function () {
-                newsletterPopup.classList.toggle("active");
-                newsletterToggle.classList.toggle("active");
-            });
-
-            // Close newsletter on submission
-            const newsletterForm = document.querySelector(
-                ".travel_newsletter_form"
-            );
-            newsletterForm.addEventListener("submit", function (e) {
-                e.preventDefault();
-                alert("Thank you for subscribing to our newsletter!");
-                newsletterPopup.classList.remove("active");
-                newsletterToggle.classList.remove("active");
-                newsletterForm.reset();
-            });
-        });
-    </script>
 </body>
 
 </html>
