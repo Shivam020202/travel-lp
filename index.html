@@ -1023,6 +1023,7 @@
         }
 
         .travel_about_container {
+            overflow: hidden;
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
@@ -1032,14 +1033,17 @@
 
         .travel_about_content {
             display: flex;
+            /* overflow: hidden; */
             gap: 3rem;
             margin-top: 3rem;
             align-items: center;
+            flex-wrap: wrap;
         }
 
-        /* Image Container */
+        /* Image Section */
         .travel_about_image_container {
             flex: 1;
+            /* overflow: hidden; */
             position: relative;
             min-height: 450px;
         }
@@ -1057,6 +1061,7 @@
 
         .travel_about_image_accent {
             position: absolute;
+            overflow: hidden;
             width: 50%;
             height: 250px;
             background-size: cover;
@@ -1065,7 +1070,7 @@
             border: 5px solid white;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             bottom: 0;
-            right: -50px;
+            right: 0px;
             z-index: 3;
         }
 
@@ -1097,7 +1102,7 @@
             letter-spacing: 1px;
         }
 
-        /* Text Content */
+        /* Text Section */
         .travel_about_text {
             flex: 1;
         }
@@ -1128,16 +1133,20 @@
             margin-bottom: 2rem;
         }
 
-        /* Values */
+        /* Values Section (2x4 Grid) - Moved Under Content */
         .travel_about_values {
-            margin-bottom: 2rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+            width: 100%;
+            flex-wrap: wrap;
         }
 
         .travel_value_item {
             display: flex;
             align-items: flex-start;
             gap: 1rem;
-            margin-bottom: 1.2rem;
         }
 
         .travel_value_icon {
@@ -1166,11 +1175,13 @@
             line-height: 1.6;
         }
 
-        /* Stats */
+        /* Stats Section */
         .travel_about_stats {
+            width: 100%;
             display: flex;
             flex-wrap: wrap;
             gap: 1.5rem;
+            margin-top: 2rem;
             margin-bottom: 2rem;
             border-top: 1px solid #ddd;
             border-bottom: 1px solid #ddd;
@@ -1198,8 +1209,9 @@
             letter-spacing: 1px;
         }
 
-        /* Certification */
+        /* Certification Section */
         .travel_about_certification {
+            justify-content: center;
             display: flex;
             align-items: center;
             margin-bottom: 2rem;
@@ -1234,6 +1246,8 @@
         /* CTAs */
         .travel_about_ctas {
             display: flex;
+            justify-content: center;
+            align-items: center;
             gap: 1rem;
         }
 
@@ -1254,92 +1268,22 @@
             color: white;
         }
 
-        /* Team Section */
-        .travel_team_section {
-            margin-top: 4rem;
-        }
-
-        .travel_team_heading {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .travel_team_grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .travel_team_member {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            padding-bottom: 1.5rem;
-        }
-
-        .travel_team_member:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .travel_member_image {
-            width: 100%;
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .travel_member_name {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin: 1rem 1.5rem 0.3rem;
-            color: #333;
-        }
-
-        .travel_member_title {
-            font-size: 0.9rem;
-            color: #ff6b35;
-            margin: 0 1.5rem 1rem;
-            font-weight: 500;
-        }
-
-        .travel_member_bio {
-            font-size: 0.95rem;
-            color: #666;
-            line-height: 1.6;
-            margin: 0 1.5rem;
-        }
-
         /* Responsive styles */
-        @media (max-width: 991px) {
+        @media (max-width: 1024px) {
+            .travel_about_values {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
             .travel_about_content {
                 flex-direction: column;
             }
 
             .travel_about_image_container {
-                width: 100%;
                 margin-bottom: 2rem;
             }
 
-            .travel_about_image_accent {
-                right: 0;
-            }
-
-            .travel_about_experience {
-                left: 0;
-            }
-
-            .travel_about_heading {
-                font-size: 1.8rem;
-            }
-
-            .travel_stat_item {
-                min-width: 100%;
+            .travel_about_text {
+                margin-top: 2rem;
             }
         }
 
@@ -1384,6 +1328,10 @@
             .travel_secondary_about_cta {
                 width: 100%;
                 text-align: center;
+            }
+
+            .travel_about_values {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -2638,158 +2586,185 @@
     <section class="travel_about_section" id="about">
         <div class="travel_about_container">
             <div class="travel_section_header">
-                <h2 class="travel_section_title">About TravelEscape</h2>
-                <p class="travel_section_subtitle">
-                    Crafting premium travel experiences since 2005
-                </p>
+                <h2 class="travel_section_title">About Moon Travels</h2>
+                <p class="travel_section_subtitle">Crafting premium travel experiences since 2005</p>
             </div>
 
             <div class="travel_about_content">
-                <div class="travel_about_image_container">
-                    <div class="travel_about_image_main"
-                        style="background-image: url('https://images.unsplash.com/photo-1579689217062-f66443381e24?q=80&w=3020&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+                <div>
+                    <!-- Image Section -->
+                    <div class="travel_about_image_container">
+                        <div class="travel_about_image_main"
+                            style="background-image: url('https://images.unsplash.com/photo-1579689217062-f66443381e24?q=80&w=3020&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+                        </div>
+                        <div class="travel_about_image_accent"
+                            style="background-image: url('https://images.unsplash.com/photo-1715457573748-8e8a70b2c1be?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+                        </div>
+                        <div class="travel_about_experience">
+                            <span class="travel_experience_number">18</span>
+                            <span class="travel_experience_text">Years of Excellence</span>
+                        </div>
                     </div>
-                    <div class="travel_about_image_accent"
-                        style="background-image: url('https://images.unsplash.com/photo-1715457573748-8e8a70b2c1be?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
-                    </div>
-                    <div class="travel_about_experience">
-                        <span class="travel_experience_number">18</span>
-                        <span class="travel_experience_text">Years of Excellence</span>
+
+                    <!-- Text Content -->
+                    <div class="travel_about_text">
+                        <h3 class="travel_about_heading">
+                            Your Premium Travel Partner for Unforgettable Journeys
+                        </h3>
+
+                        <p class="travel_about_paragraph">
+                            Founded in 2005, Moon Travels has grown from a small local agency to a leading travel
+                            company,
+                            helping thousands of travelers explore the breathtaking beauty of Kashmir and beyond. Our
+                            commitment
+                            to quality, transparency, and personalized service makes us the preferred choice for those
+                            seeking
+                            seamless and memorable travel experiences.
+                        </p>
                     </div>
                 </div>
-
-                <div class="travel_about_text">
-                    <h3 class="travel_about_heading">
-                        Your Premium Travel Partner for Unforgettable Journeys
-                    </h3>
-
-                    <p class="travel_about_paragraph">
-                        Founded in 2005, TravelEscape has grown from a small local agency
-                        to an award-winning international travel company serving over
-                        50,000 travelers annually. Our commitment to quality, attention to
-                        detail, and personalized service has made us the preferred choice
-                        for discerning travelers around the world.
-                    </p>
-
-                    <div class="travel_about_values">
-                        <div class="travel_value_item">
-                            <div class="travel_value_icon">🌟</div>
-                            <div class="travel_value_content">
-                                <h4>Premium Experience</h4>
-                                <p>
-                                    We partner exclusively with 4 and 5-star accommodations and
-                                    trusted local experts to ensure a luxury experience at every
-                                    destination.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="travel_value_item">
-                            <div class="travel_value_icon">🛡️</div>
-                            <div class="travel_value_content">
-                                <h4>100% Financial Protection</h4>
-                                <p>
-                                    Your payments are secure with our ATOL and ABTA protections,
-                                    ensuring complete peace of mind for every booking.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="travel_value_item">
-                            <div class="travel_value_icon">👥</div>
-                            <div class="travel_value_content">
-                                <h4>Personalized Attention</h4>
-                                <p>
-                                    Our travel consultants take time to understand your
-                                    preferences, creating custom itineraries tailored to your
-                                    specific needs.
-                                </p>
-                            </div>
+                <!-- About Values in 4x2 Grid -->
+                <div class="travel_about_values">
+                    <div class="travel_value_item">
+                        <div class="travel_value_icon">🌟</div>
+                        <div class="travel_value_content">
+                            <h4>Premium Experience</h4>
+                            <p>
+                                We partner exclusively with luxury houseboats, 4 & 5-star hotels, and trusted local
+                                experts to provide an authentic and high-end travel experience.
+                            </p>
                         </div>
                     </div>
 
-                    <div class="travel_about_stats">
-                        <div class="travel_stat_item">
-                            <span class="travel_stat_number">50K+</span>
-                            <span class="travel_stat_label">Happy Travelers</span>
-                        </div>
-
-                        <div class="travel_stat_item">
-                            <span class="travel_stat_number">120+</span>
-                            <span class="travel_stat_label">Destinations</span>
-                        </div>
-
-                        <div class="travel_stat_item">
-                            <span class="travel_stat_number">15</span>
-                            <span class="travel_stat_label">Travel Awards</span>
-                        </div>
-
-                        <div class="travel_stat_item">
-                            <span class="travel_stat_number">98%</span>
-                            <span class="travel_stat_label">Satisfaction Rate</span>
+                    <div class="travel_value_item">
+                        <div class="travel_value_icon">🛡️</div>
+                        <div class="travel_value_content">
+                            <h4>100% Financial Protection</h4>
+                            <p>
+                                Your bookings are completely secure, ensuring a worry-free journey with transparent
+                                pricing and no hidden charges.
+                            </p>
                         </div>
                     </div>
 
-                    <div class="travel_about_certification">
-                        <div class="travel_certification_title">Certified & Trusted:</div>
-                        <div class="travel_certification_logos">
-                            <div class="travel_certification_logo">ABTA</div>
-                            <div class="travel_certification_logo">ATOL</div>
-                            <div class="travel_certification_logo">IATA</div>
-                            <div class="travel_certification_logo">TrustPilot</div>
+                    <div class="travel_value_item">
+                        <div class="travel_value_icon">👥</div>
+                        <div class="travel_value_content">
+                            <h4>Personalized Attention</h4>
+                            <p>
+                                Our experienced travel consultants create fully customized itineraries, ensuring
+                                every
+                                trip is tailored to your preferences—whether it's a honeymoon, a family vacation, or
+                                an
+                                adventure-packed getaway.
+                            </p>
                         </div>
                     </div>
 
-                    <div class="travel_about_ctas">
-                        <a href="#book-now" class="travel_primary_cta">Plan Your Trip</a>
-                        <a href="#" class="travel_secondary_about_cta">Our Travel Brochure</a>
+                    <div class="travel_value_item">
+                        <div class="travel_value_icon">🚗</div>
+                        <div class="travel_value_content">
+                            <h4>Hassle-Free Transportation</h4>
+                            <p>
+                                From airport pickups to guided city tours, we provide seamless transport solutions,
+                                so
+                                you can explore without stress.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="travel_value_item">
+                        <div class="travel_value_icon">🌍</div>
+                        <div class="travel_value_content">
+                            <h4>Exclusive Destination Access</h4>
+                            <p>
+                                Gain VIP experiences, priority reservations, and access to hidden gems that only our
+                                local experts can offer.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="travel_value_item">
+                        <div class="travel_value_icon">🔄</div>
+                        <div class="travel_value_content">
+                            <h4>Fully Customized Packages</h4>
+                            <p>
+                                No two travelers are the same, so why should their itineraries be? We offer
+                                personalized
+                                travel packages designed to fit your style, budget, and schedule.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="travel_value_item">
+                        <div class="travel_value_icon">💰</div>
+                        <div class="travel_value_content">
+                            <h4>No Hidden Charges</h4>
+                            <p>
+                                What you see is what you pay—no surprises, no last-minute costs, just transparent
+                                pricing for a hassle-free experience.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="travel_value_item">
+                        <div class="travel_value_icon">📞</div>
+                        <div class="travel_value_content">
+                            <h4>24/7 Support & Assistance</h4>
+                            <p>
+                                No matter where you are, our dedicated support team is just a call away, ensuring a
+                                smooth and worry-free journey.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <!-- <div class="travel_team_section">
-                <h3 class="travel_team_heading">Meet Our Leadership</h3>
-
-                <div class="travel_team_grid">
-                    <div class="travel_team_member">
-                        <div class="travel_member_image" style="background-image: url('/api/placeholder/200/200')">
-                        </div>
-                        <h4 class="travel_member_name">Jennifer Adams</h4>
-                        <p class="travel_member_title">Founder & CEO</p>
-                        <p class="travel_member_bio">
-                            With over 25 years in luxury travel, Jennifer has personally
-                            visited 87 countries and brings her passion for authentic
-                            experiences to every TravelEscape journey.
-                        </p>
+            <div>
+                <!-- Stats Section -->
+                <div class="travel_about_stats">
+                    <div class="travel_stat_item">
+                        <span class="travel_stat_number">2K+</span>
+                        <span class="travel_stat_label">Happy Travelers</span>
                     </div>
 
-                    <div class="travel_team_member">
-                        <div class="travel_member_image" style="background-image: url('/api/placeholder/200/200')">
-                        </div>
-                        <h4 class="travel_member_name">Michael Chen</h4>
-                        <p class="travel_member_title">Head of Destinations</p>
-                        <p class="travel_member_bio">
-                            A former tour guide and travel writer, Michael leads our team in
-                            discovering hidden gems and creating exclusive experiences our
-                            travelers won't find anywhere else.
-                        </p>
+                    <div class="travel_stat_item">
+                        <span class="travel_stat_number">20+</span>
+                        <span class="travel_stat_label">Destinations</span>
                     </div>
 
-                    <div class="travel_team_member">
-                        <div class="travel_member_image" style="background-image: url('/api/placeholder/200/200')">
-                        </div>
-                        <h4 class="travel_member_name">Sarah Rodriguez</h4>
-                        <p class="travel_member_title">Customer Experience Director</p>
-                        <p class="travel_member_bio">
-                            Sarah ensures every client receives VIP treatment from first
-                            inquiry to post-trip follow-up, maintaining our industry-leading
-                            98% satisfaction rate.
-                        </p>
+                    <div class="travel_stat_item">
+                        <span class="travel_stat_number">5</span>
+                        <span class="travel_stat_label">Travel Awards</span>
+                    </div>
+
+                    <div class="travel_stat_item">
+                        <span class="travel_stat_number">92%</span>
+                        <span class="travel_stat_label">Satisfaction Rate</span>
                     </div>
                 </div>
-            </div> -->
+
+                <!-- Certification Section -->
+                <div class="travel_about_certification">
+                    <div class="travel_certification_title">Certified & Trusted:</div>
+                    <div class="travel_certification_logos">
+                        <div class="travel_certification_logo">ABTA</div>
+                        <div class="travel_certification_logo">ATOL</div>
+                        <div class="travel_certification_logo">IATA</div>
+                        <div class="travel_certification_logo">TrustPilot</div>
+                    </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="travel_about_ctas">
+                    <a href="#book-now" class="travel_primary_cta">Plan Your Trip</a>
+                    <a href="#" class="travel_secondary_about_cta">Our Travel Brochure</a>
+                </div>
+            </div>
+        </div>
         </div>
     </section>
+
+
     <!-- Gallery Section HTML -->
     <section class="travel_gallery_section" id="gallery">
         <div class="travel_gallery_container">
