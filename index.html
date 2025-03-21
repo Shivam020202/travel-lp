@@ -18,6 +18,13 @@
             color: #333;
         }
 
+        .logo {
+            width: 100px;
+            height: 50px;
+            object-fit: cover;
+
+        }
+
         /* Packages Section Styles */
         .travel_packages_section {
             padding: 4rem 0;
@@ -261,7 +268,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            padding: 1rem 2rem;
+            padding: 0.5rem 1rem;
             background-color: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(5px);
             z-index: 1000;
@@ -270,7 +277,7 @@
         }
 
         .travel_navbar.scrolled {
-            padding: 0.7rem 2rem;
+            padding: 0.2rem 0.7rem;
             background-color: rgba(255, 255, 255, 0.95);
         }
 
@@ -1645,6 +1652,12 @@
 
     <style>
         /* Footer Styles */
+        .footer-logo {
+            width: 200px;
+            height: 100px;
+            object-fit: cover;
+        }
+
         .travel_footer {
             background-color: #222;
             color: #fff;
@@ -1849,13 +1862,59 @@
             }
         }
     </style>
+
+    <style>
+        .travel_form_input.error,
+        .travel_form_select.error {
+            border-color: #ff3333;
+        }
+
+        .error-message {
+            color: #ff3333;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        /* Add a responsive thank you message for the redirect page */
+        .thank-you-container {
+            text-align: center;
+            padding: 50px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .thank-you-container h1 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        .thank-you-container p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .thank-you-container .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .thank-you-container .btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
 </head>
 
 <body>
     <!-- Navbar -->
     <nav class="travel_navbar">
         <div class="travel_nav_container">
-            <a href="#" class="travel_logo">Travel<span>Escape</span></a>
+            <a href="#" class="travel_logo"><img src="assets/logo.png" class="logo" alt="logo"></a>
             <button class="travel_mobile_menu_btn">☰</button>
             <div class="travel_nav_links">
                 <a href="#packages" class="travel_nav_link">Packages</a>
@@ -1887,7 +1946,7 @@
             <div class="travel_hero_content">
                 <div class="travel_hero_tagline">EXPLORE • DISCOVER • EXPERIENCE</div>
                 <h1 class="travel_hero_title">
-                    Discover the World's Most Beautiful Destinations
+                    Kashmir Tour Packages at Unbeatable Prices - Plan Your Trip Now!
                 </h1>
                 <p class="travel_hero_description">
                     Embark on a journey of a lifetime with expertly curated travel
@@ -1914,12 +1973,12 @@
                 </div>
                 <div class="travel_testimonial">
                     <p class="travel_testimonial_text">
-                        "The trip organized by TravelEscape was absolutely phenomenal!
-                        Everything was perfectly arranged and the destinations were
-                        breathtaking."
+                        "The trip was truly value for money! It was perfect for the whole family. Everything was planned
+                        so well, and the places
+                        they showed us were just delightful."
                     </p>
                     <div class="travel_testimonial_author">
-                        - Sarah Williams, London
+                        - Sunita , Bhopal
                     </div>
                 </div>
             </div>
@@ -1930,68 +1989,49 @@
                 <p class="travel_form_subtitle">
                     Get a personalized quote in just a few clicks
                 </p>
-                <form class="travel_booking_form">
-                    <!-- <div class="travel_form_group">
-                        <label for="travel_destination" class="travel_form_label">Destination</label>
-                        <select id="travel_destination" class="travel_form_select">
-                            <option value="">Select Destination</option>
-                            <option value="bali">Bali, Indonesia</option>
-                            <option value="paris">Paris, France</option>
-                            <option value="santorini">Santorini, Greece</option>
-                            <option value="tokyo">Tokyo, Japan</option>
-                            <option value="maldives">Maldives</option>
-                        </select>
-                    </div> -->
-                    <!-- <div class="travel_form_row">
-                        <div class="travel_form_col">
-                            <div class="travel_form_group">
-                                <label for="travel_check_in" class="travel_form_label">Check In</label>
-                                <input type="date" id="travel_check_in" class="travel_form_input" />
-                            </div>
-                        </div>
-                        <div class="travel_form_col">
-                            <div class="travel_form_group">
-                                <label for="travel_check_out" class="travel_form_label">Check Out</label>
-                                <input type="date" id="travel_check_out" class="travel_form_input" />
-                            </div>
-                        </div>
-                    </div> -->
-                    <div class="travel_form_row">
-                        <!-- <div class="travel_form_col">
-                            <div class="travel_form_group">
-                                <label for="travel_children" class="travel_form_label">Children</label>
-                                <select id="travel_children" class="travel_form_select">
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4+">4+</option>
-                                </select>
-                            </div>
-                        </div> -->
-                    </div>
+
+                <!-- Form with Web3Forms integration -->
+                <form class="travel_booking_form" action="https://api.web3forms.com/submit" method="POST">
+                    <!-- Required Web3Forms access key -->
+                    <input type="hidden" name="access_key" value="5e686500-6e6e-4345-ba86-9c2b32d47f26">
+
+                    <!-- Optional Web3Forms configurations -->
+                    <input type="hidden" name="subject" value="New Dream Vacation Booking Request">
+                    <input type="hidden" name="from_name" value="Dream Vacation Website">
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                    <!-- Redirect URL after submission (optional) -->
+                    <input type="hidden" name="redirect" value="/thank-you.html">
+
+                    <!-- Personal Information -->
                     <div class="travel_form_group">
                         <label for="travel_name" class="travel_form_label">Full name</label>
-                        <input type="text" id="travel_name" class="travel_form_input" placeholder="Your full name" />
+                        <input type="text" id="travel_name" name="name" class="travel_form_input"
+                            placeholder="Your full name" required />
                     </div>
+
                     <div class="travel_form_group">
                         <label for="travel_email" class="travel_form_label">Email</label>
-                        <input type="email" id="travel_email" class="travel_form_input"
-                            placeholder="Your email address" />
+                        <input type="email" id="travel_email" name="email" class="travel_form_input"
+                            placeholder="Your email address" required />
                     </div>
+
                     <div class="travel_form_group">
-                        <label for="travel_email" class="travel_form_label">Phone</label>
-                        <input type="number" id="travel_email" class="travel_form_input"
-                            placeholder="Your phone number" />
+                        <label for="travel_phone" class="travel_form_label">Phone</label>
+                        <input type="tel" id="travel_phone" name="phone" class="travel_form_input"
+                            placeholder="Your phone number" required />
                     </div>
+
                     <div class="travel_form_group">
-                        <label for="travel_name" class="travel_form_label">City</label>
-                        <input type="text" id="travel_name" class="travel_form_input" placeholder="Your city name" />
+                        <label for="travel_city" class="travel_form_label">City</label>
+                        <input type="text" id="travel_city" name="city" class="travel_form_input"
+                            placeholder="Your city name" required />
                     </div>
+
                     <div class="travel_form_col">
                         <div class="travel_form_group">
                             <label for="travel_adults" class="travel_form_label">No. of Person</label>
-                            <select id="travel_adults" class="travel_form_select">
+                            <select id="travel_adults" name="persons" class="travel_form_select" required>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -2000,9 +2040,13 @@
                             </select>
                         </div>
                     </div>
+
                     <button type="submit" class="travel_form_submit">
                         Get Your Free Quote
                     </button>
+
+                    <!-- Success/error message will appear here -->
+                    <div id="result"></div>
                 </form>
             </div>
         </div>
@@ -2018,300 +2062,7 @@
             </div>
 
             <div class="travel_packages_grid">
-                <!-- Package Card 1 -->
-                <div class="travel_package_card">
-                    <div class="travel_package_image" style="background-image: url(assets/amarnath.jpg)"></div>
-                    <div class="travel_package_location">
-                        <i class="travel_location_icon">📍</i>
-                        <span>Sonmarg, India</span>
-                    </div>
-                    <div class="travel_package_content">
-                        <h3 class="travel_package_title">Amarnath Pilgrimage Tour</h3>
-                        <div class="travel_package_details">
-                            <div class="travel_package_duration">
-                                <i class="travel_duration_icon">🗓️</i>
-                                <span>3 Nights / 4 Days</span>
-                            </div>
-                            <div class="travel_package_price">
-                                <span class="travel_price_text">From</span>
-                                <span class="travel_price_amount">₹9,999</span>
-                                <span class="travel_price_person">per person</span>
-                            </div>
-                        </div>
-                        <div class="travel_package_features">
-                            <div class="travel_feature_item">
-                                <i class="travel_feature_icon">🚁</i>
-                                <span>Helicopter Ride</span>
-                            </div>
-                            <div class="travel_feature_item">
-                                <i class="travel_feature_icon">👁️</i>
-                                <span>Guided Tours</span>
-                            </div>
-                            <div class="travel_feature_item">
-                                <i class="travel_feature_icon">🍽️</i>
-                                <span>All Meals</span>
-                            </div>
-                            <div class="travel_feature_item">
-                                <i class="travel_feature_icon">🚕</i>
-                                <span>Airport Transfer</span>
-                            </div>
-                        </div>
-                        <div class="travel_package_actions">
-                            <a href="tel:+12345678901" class="travel_call_btn">
-                                <i>📞</i> Call Now
-                            </a>
-                            <a href="https://wa.me/12345678901" class="travel_whatsapp_btn">
-                                <i>💬</i> WhatsApp
-                            </a>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Package Card 2 -->
-                <div class="travel_package_card">
-                    <div class="travel_package_image" style="background-image: url(assets/leh.jpg)"></div>
-                    <div class="travel_package_location">
-                        <i class="travel_location_icon">📍</i>
-                        <span>Leh-Ladakh, India</span>
-                    </div>
-                    <div class="travel_package_content">
-                        <h3 class="travel_package_title">Leh-Ladakh Adventure</h3>
-                        <div class="travel_package_details">
-                            <div class="travel_package_duration">
-                                <i class="travel_duration_icon">🗓️</i>
-                                <span>8 Nights / 9 Days</span>
-                            </div>
-                            <div class="travel_package_price">
-                                <span class="travel_price_text">From</span>
-                                <span class="travel_price_amount">₹15,000</span>
-                                <span class="travel_price_person">per person</span>
-                            </div>
-                        </div>
-                        <div class="travel_package_features">
-                            <div class="travel_feature_item">
-                                <i class="travel_feature_icon">🏯</i>
-                                <span>Monastery Visits</span>
-                            </div>
-                            <div class="travel_feature_item">
-                                <i class="travel_feature_icon">🏕️</i>
-                                <span>Luxury Camps</span>
-                            </div>
-                            <div class="travel_feature_item">
-                                <i class="travel_feature_icon">👁️</i>
-                                <span>Cultural Tours</span>
-                            </div>
-                            <div class="travel_feature_item">
-                                <i class="travel_feature_icon">🚙</i>
-                                <span>Private Transfers</span>
-                            </div>
-                        </div>
-                        <div class="travel_package_actions">
-                            <a href="tel:+12345678901" class="travel_call_btn">
-                                <i>📞</i> Call Now
-                            </a>
-                            <a href="https://wa.me/12345678901" class="travel_whatsapp_btn">
-                                <i>💬</i> WhatsApp
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Package Card 3 -->
-                <div class="travel_package_card">
-                    <div class="travel_package_image" style="background-image: url(assets/vaishnodevi.jpg)"></div>
-                    <div class="travel_package_location">
-                        <i class="travel_location_icon">📍</i>
-                        <span>Katra, India</span>
-                    </div>
-                    <div class="travel_package_content">
-                        <h3 class="travel_package_title">Vaishno Devi Group Tour</h3>
-                        <div class="travel_package_details">
-                            <div class="travel_package_duration">
-                                <i class="travel_duration_icon">🗓️</i>
-                                <span>7 Nights / 8 Days</span>
-                            </div>
-                            <div class="travel_package_price">
-                                <span class="travel_price_text">From</span>
-                                <span class="travel_price_amount">₹5,999</span>
-                                <span class="travel_price_person">per person</span>
-                            </div>
-                        </div>
-                        <div class="travel_package_features">
-                            <div class="travel_feature_item">
-                                <i class="travel_feature_icon">🛕</i>
-                                <span>Temple Darshan</span>
-                            </div>
-                            <div class="travel_feature_item">
-                                <i class="travel_feature_icon">🏨</i>
-                                <span>Hotel & Houseboat</span>
-                            </div>
-                            <div class="travel_feature_item">
-                                <i class="travel_feature_icon">👁️</i>
-                                <span>Sightseeing</span>
-                            </div>
-                            <div class="travel_feature_item">
-                                <i class="travel_feature_icon">🛶</i>
-                                <span>Shikara Ride</span>
-                            </div>
-                        </div>
-                        <div class="travel_package_actions">
-                            <a href="tel:+12345678901" class="travel_call_btn">
-                                <i>📞</i> Call Now
-                            </a>
-                            <a href="https://wa.me/12345678901" class="travel_whatsapp_btn">
-                                <i>💬</i> WhatsApp
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Package Card 4 -->
-                <div class="travel_package_card">
-                    <div class="travel_package_image" style="background-image: url(assets/kashmir.jpg)"></div>
-                    <div class="travel_package_location">
-                        <i class="travel_location_icon">📍</i>
-                        <span>Kashmir Valley, India</span>
-                    </div>
-                    <div class="travel_package_content">
-                        <h3 class="travel_package_title">Kashmir Valley Explorer</h3>
-                        <div class="travel_package_details">
-                            <div class="travel_package_duration">
-                                <i class="travel_duration_icon">🗓️</i>
-                                <span>6 Nights / 7 Days</span>
-                            </div>
-                            <div class="travel_package_price">
-                                <span class="travel_price_text">From</span>
-                                <span class="travel_price_amount">₹9,999</span>
-                                <span class="travel_price_person">per person</span>
-                            </div>
-                        </div>
-                        <div class="travel_package_features">
-                            <div class="travel_feature_item">
-                                <i class="travel_feature_icon">🌷</i>
-                                <span>Mughal Gardens</span>
-                            </div>
-                            <div class="travel_feature_item">
-                                <i class="travel_feature_icon">🚡</i>
-                                <span>Gondola Ride</span>
-                            </div>
-                            <div class="travel_feature_item">
-                                <i class="travel_feature_icon">🛶</i>
-                                <span>Houseboat Stay</span>
-                            </div>
-                            <div class="travel_feature_item">
-                                <i class="travel_feature_icon">👁️</i>
-                                <span>Sightseeing</span>
-                            </div>
-                        </div>
-                        <div class="travel_package_actions">
-                            <a href="tel:+12345678901" class="travel_call_btn">
-                                <i>📞</i> Call Now
-                            </a>
-                            <a href="https://wa.me/12345678901" class="travel_whatsapp_btn">
-                                <i>💬</i> WhatsApp
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Package Card 5 -->
-                <div class="travel_package_card">
-                    <div class="travel_package_image" style="background-image: url(assets/gulmarg.jpg)"></div>
-                    <div class="travel_package_location">
-                        <i class="travel_location_icon">📍</i>
-                        <span>Gulmarg, India</span>
-                    </div>
-                    <div class="travel_package_content">
-                        <h3 class="travel_package_title">Winter Wonderland Escape</h3>
-                        <div class="travel_package_details">
-                            <div class="travel_package_duration">
-                                <i class="travel_duration_icon">🗓️</i>
-                                <span>3 Nights / 4 Days</span>
-                            </div>
-                            <div class="travel_package_price">
-                                <span class="travel_price_text">From</span>
-                                <span class="travel_price_amount">₹8,000</span>
-                                <span class="travel_price_person">per person</span>
-                            </div>
-                        </div>
-                        <div class="travel_package_features">
-                            <div class="travel_feature_item">
-                                <i class="travel_feature_icon">⛷️</i>
-                                <span>Ski Resort</span>
-                            </div>
-                            <div class="travel_feature_item">
-                                <i class="travel_feature_icon">🚡</i>
-                                <span>Gondola Ride</span>
-                            </div>
-                            <div class="travel_feature_item">
-                                <i class="travel_feature_icon">🎿</i>
-                                <span>Winter Sports</span>
-                            </div>
-                            <div class="travel_feature_item">
-                                <i class="travel_feature_icon">🏨</i>
-                                <span>Hotel Stay</span>
-                            </div>
-                        </div>
-                        <div class="travel_package_actions">
-                            <a href="tel:+12345678901" class="travel_call_btn">
-                                <i>📞</i> Call Now
-                            </a>
-                            <a href="https://wa.me/12345678901" class="travel_whatsapp_btn">
-                                <i>💬</i> WhatsApp
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Package Card 6 -->
-                <div class="travel_package_card">
-                    <div class="travel_package_image" style="background-image: url(assets/pahalgam.jpg)"></div>
-                    <div class="travel_package_location">
-                        <i class="travel_location_icon">📍</i>
-                        <span>Pahalgam, India</span>
-                    </div>
-                    <div class="travel_package_content">
-                        <h3 class="travel_package_title">Discover Kashmir Tour</h3>
-                        <div class="travel_package_details">
-                            <div class="travel_package_duration">
-                                <i class="travel_duration_icon">🗓️</i>
-                                <span>4 Nights / 5 Days</span>
-                            </div>
-                            <div class="travel_package_price">
-                                <span class="travel_price_text">From</span>
-                                <span class="travel_price_amount">₹9,999</span>
-                                <span class="travel_price_person">per person</span>
-                            </div>
-                        </div>
-                        <div class="travel_package_features">
-                            <div class="travel_feature_item">
-                                <i class="travel_feature_icon">🌷</i>
-                                <span>Tulip Garden</span>
-                            </div>
-                            <div class="travel_feature_item">
-                                <i class="travel_feature_icon">🛶</i>
-                                <span>Houseboat Stay</span>
-                            </div>
-                            <div class="travel_feature_item">
-                                <i class="travel_feature_icon">🏞️</i>
-                                <span>Valley Tours</span>
-                            </div>
-                            <div class="travel_feature_item">
-                                <i class="travel_feature_icon">👁️</i>
-                                <span>Sightseeing</span>
-                            </div>
-                        </div>
-                        <div class="travel_package_actions">
-                            <a href="tel:+12345678901" class="travel_call_btn">
-                                <i>📞</i> Call Now
-                            </a>
-                            <a href="https://wa.me/12345678901" class="travel_whatsapp_btn">
-                                <i>💬</i> WhatsApp
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Package Card 7 -->
                 <div class="travel_package_card">
                     <div class="travel_package_image" style="background-image: url(assets/tulip2.jpg)"></div>
                     <div class="travel_package_location">
@@ -2360,7 +2111,7 @@
                     </div>
                 </div>
 
-                <!-- Package Card 8 -->
+
                 <div class="travel_package_card">
                     <div class="travel_package_image" style="background-image: url(assets/tulip1.jpg)"></div>
                     <div class="travel_package_location">
@@ -2408,11 +2159,305 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="travel_package_card">
+                    <div class="travel_package_image" style="background-image: url(assets/kashmir.jpg)"></div>
+                    <div class="travel_package_location">
+                        <i class="travel_location_icon">📍</i>
+                        <span>Kashmir Valley, India</span>
+                    </div>
+                    <div class="travel_package_content">
+                        <h3 class="travel_package_title">Kashmir Valley Explorer</h3>
+                        <div class="travel_package_details">
+                            <div class="travel_package_duration">
+                                <i class="travel_duration_icon">🗓️</i>
+                                <span>6 Nights / 7 Days</span>
+                            </div>
+                            <div class="travel_package_price">
+                                <span class="travel_price_text">From</span>
+                                <span class="travel_price_amount">₹9,999</span>
+                                <span class="travel_price_person">per person</span>
+                            </div>
+                        </div>
+                        <div class="travel_package_features">
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🌷</i>
+                                <span>Mughal Gardens</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🚡</i>
+                                <span>Gondola Ride</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🛶</i>
+                                <span>Houseboat Stay</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">👁️</i>
+                                <span>Sightseeing</span>
+                            </div>
+                        </div>
+                        <div class="travel_package_actions">
+                            <a href="tel:+12345678901" class="travel_call_btn">
+                                <i>📞</i> Call Now
+                            </a>
+                            <a href="https://wa.me/12345678901" class="travel_whatsapp_btn">
+                                <i>💬</i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="travel_package_card">
+                    <div class="travel_package_image" style="background-image: url(assets/gulmarg.jpg)"></div>
+                    <div class="travel_package_location">
+                        <i class="travel_location_icon">📍</i>
+                        <span>Gulmarg, India</span>
+                    </div>
+                    <div class="travel_package_content">
+                        <h3 class="travel_package_title">Winter Wonderland Escape</h3>
+                        <div class="travel_package_details">
+                            <div class="travel_package_duration">
+                                <i class="travel_duration_icon">🗓️</i>
+                                <span>3 Nights / 4 Days</span>
+                            </div>
+                            <div class="travel_package_price">
+                                <span class="travel_price_text">From</span>
+                                <span class="travel_price_amount">₹8,000</span>
+                                <span class="travel_price_person">per person</span>
+                            </div>
+                        </div>
+                        <div class="travel_package_features">
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">⛷️</i>
+                                <span>Ski Resort</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🚡</i>
+                                <span>Gondola Ride</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🎿</i>
+                                <span>Winter Sports</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🏨</i>
+                                <span>Hotel Stay</span>
+                            </div>
+                        </div>
+                        <div class="travel_package_actions">
+                            <a href="tel:+12345678901" class="travel_call_btn">
+                                <i>📞</i> Call Now
+                            </a>
+                            <a href="https://wa.me/12345678901" class="travel_whatsapp_btn">
+                                <i>💬</i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="travel_package_card">
+                    <div class="travel_package_image" style="background-image: url(assets/pahalgam.jpg)"></div>
+                    <div class="travel_package_location">
+                        <i class="travel_location_icon">📍</i>
+                        <span>Pahalgam, India</span>
+                    </div>
+                    <div class="travel_package_content">
+                        <h3 class="travel_package_title">Discover Kashmir Tour</h3>
+                        <div class="travel_package_details">
+                            <div class="travel_package_duration">
+                                <i class="travel_duration_icon">🗓️</i>
+                                <span>4 Nights / 5 Days</span>
+                            </div>
+                            <div class="travel_package_price">
+                                <span class="travel_price_text">From</span>
+                                <span class="travel_price_amount">₹9,999</span>
+                                <span class="travel_price_person">per person</span>
+                            </div>
+                        </div>
+                        <div class="travel_package_features">
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🌷</i>
+                                <span>Tulip Garden</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🛶</i>
+                                <span>Houseboat Stay</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🏞️</i>
+                                <span>Valley Tours</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">👁️</i>
+                                <span>Sightseeing</span>
+                            </div>
+                        </div>
+                        <div class="travel_package_actions">
+                            <a href="tel:+12345678901" class="travel_call_btn">
+                                <i>📞</i> Call Now
+                            </a>
+                            <a href="https://wa.me/12345678901" class="travel_whatsapp_btn">
+                                <i>💬</i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="travel_package_card">
+                    <div class="travel_package_image" style="background-image: url(assets/amarnath.jpg)"></div>
+                    <div class="travel_package_location">
+                        <i class="travel_location_icon">📍</i>
+                        <span>Sonmarg, India</span>
+                    </div>
+                    <div class="travel_package_content">
+                        <h3 class="travel_package_title">Amarnath Pilgrimage Tour</h3>
+                        <div class="travel_package_details">
+                            <div class="travel_package_duration">
+                                <i class="travel_duration_icon">🗓️</i>
+                                <span>3 Nights / 4 Days</span>
+                            </div>
+                            <div class="travel_package_price">
+                                <span class="travel_price_text">From</span>
+                                <span class="travel_price_amount">₹9,999</span>
+                                <span class="travel_price_person">per person</span>
+                            </div>
+                        </div>
+                        <div class="travel_package_features">
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🚁</i>
+                                <span>Helicopter Ride</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">👁️</i>
+                                <span>Guided Tours</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🍽️</i>
+                                <span>All Meals</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🚕</i>
+                                <span>Airport Transfer</span>
+                            </div>
+                        </div>
+                        <div class="travel_package_actions">
+                            <a href="tel:+12345678901" class="travel_call_btn">
+                                <i>📞</i> Call Now
+                            </a>
+                            <a href="https://wa.me/12345678901" class="travel_whatsapp_btn">
+                                <i>💬</i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="travel_package_card">
+                    <div class="travel_package_image" style="background-image: url(assets/leh.jpg)"></div>
+                    <div class="travel_package_location">
+                        <i class="travel_location_icon">📍</i>
+                        <span>Leh-Ladakh, India</span>
+                    </div>
+                    <div class="travel_package_content">
+                        <h3 class="travel_package_title">Leh-Ladakh Adventure</h3>
+                        <div class="travel_package_details">
+                            <div class="travel_package_duration">
+                                <i class="travel_duration_icon">🗓️</i>
+                                <span>8 Nights / 9 Days</span>
+                            </div>
+                            <div class="travel_package_price">
+                                <span class="travel_price_text">From</span>
+                                <span class="travel_price_amount">₹15,000</span>
+                                <span class="travel_price_person">per person</span>
+                            </div>
+                        </div>
+                        <div class="travel_package_features">
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🏯</i>
+                                <span>Monastery Visits</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🏕️</i>
+                                <span>Luxury Camps</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">👁️</i>
+                                <span>Cultural Tours</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🚙</i>
+                                <span>Private Transfers</span>
+                            </div>
+                        </div>
+                        <div class="travel_package_actions">
+                            <a href="tel:+12345678901" class="travel_call_btn">
+                                <i>📞</i> Call Now
+                            </a>
+                            <a href="https://wa.me/12345678901" class="travel_whatsapp_btn">
+                                <i>💬</i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="travel_package_card">
+                    <div class="travel_package_image" style="background-image: url(assets/vaishnodevi.jpg)"></div>
+                    <div class="travel_package_location">
+                        <i class="travel_location_icon">📍</i>
+                        <span>Katra, India</span>
+                    </div>
+                    <div class="travel_package_content">
+                        <h3 class="travel_package_title">Vaishno Devi Group Tour</h3>
+                        <div class="travel_package_details">
+                            <div class="travel_package_duration">
+                                <i class="travel_duration_icon">🗓️</i>
+                                <span>7 Nights / 8 Days</span>
+                            </div>
+                            <div class="travel_package_price">
+                                <span class="travel_price_text">From</span>
+                                <span class="travel_price_amount">₹5,999</span>
+                                <span class="travel_price_person">per person</span>
+                            </div>
+                        </div>
+                        <div class="travel_package_features">
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🛕</i>
+                                <span>Temple Darshan</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🏨-🛶</i>
+                                <span>Hotel & Houseboat</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">👁️</i>
+                                <span>Sightseeing</span>
+                            </div>
+                            <div class="travel_feature_item">
+                                <i class="travel_feature_icon">🛶</i>
+                                <span>Shikara Ride</span>
+                            </div>
+                        </div>
+                        <div class="travel_package_actions">
+                            <a href="tel:+12345678901" class="travel_call_btn">
+                                <i>📞</i> Call Now
+                            </a>
+                            <a href="https://wa.me/12345678901" class="travel_whatsapp_btn">
+                                <i>💬</i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- <div class="travel_packages_cta">
-                <a href="#book-now" class="travel_primary_cta">Book Now</a>
-            </div> -->
+
         </div>
     </section>
     <!-- Testimonials Section HTML -->
@@ -2427,16 +2472,13 @@
 
             <div class="travel_testimonials_slider">
                 <div class="travel_testimonials_track">
-                    <!-- Testimonial 1 -->
                     <div class="travel_testimonial_slide">
                         <div class="travel_testimonial_card">
                             <div class="travel_testimonial_quote">"</div>
                             <p class="travel_testimonial_content">
-                                Our trip to Bali was absolutely perfect from start to finish.
-                                The accommodations were stunning, and the itinerary was
-                                perfectly balanced between adventure and relaxation. Our guide
-                                was knowledgeable and friendly, making the experience truly
-                                memorable.
+                                Kashmir was beautiful, especially the Dal Lake. The houseboats were a unique experience.
+                                The
+                                arrangements were good, and the driver was friendly.
                             </p>
                             <div class="travel_testimonial_rating">
                                 <span>★</span>
@@ -2446,25 +2488,47 @@
                                 <span>★</span>
                             </div>
                             <div class="travel_testimonial_author">
-                                <div class="travel_author_image"
-                                    style="background-image: url('/api/placeholder/100/100')"></div>
+                                <div class="travel_author_image" style="background-image: url('assets/testi6.jpg')">
+                                </div>
                                 <div class="travel_author_info">
-                                    <h4 class="travel_author_name">Emily Johnson</h4>
-                                    <p class="travel_author_trip">Bali Paradise Retreat</p>
+                                    <h4 class="travel_author_name">Rohan Sharma</h4>
+                                    <p class="travel_author_trip">Kashmir Lake Stay</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Testimonial 2 -->
                     <div class="travel_testimonial_slide">
                         <div class="travel_testimonial_card">
                             <div class="travel_testimonial_quote">"</div>
                             <p class="travel_testimonial_content">
-                                Greece was on our bucket list for years, and TravelEscape made
-                                it an unforgettable experience. From the blue waters of
-                                Santorini to the historic sites in Athens, everything was
-                                expertly planned. The customer service was exceptional!
+                                We went to Jaipur in Rajasthan. The forts were impressive. The local markets were fun,
+                                and
+                                we did some shopping. The hotel was comfortable.
+                            </p>
+                            <div class="travel_testimonial_rating">
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                            </div>
+                            <div class="travel_testimonial_author">
+                                <div class="travel_author_image" style="background-image: url('assets/testi5.jpg')">
+                                </div>
+                                <div class="travel_author_info">
+                                    <h4 class="travel_author_name">Priya & Ankit Patel</h4>
+                                    <p class="travel_author_trip">Rajasthan Heritage Tour</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="travel_testimonial_slide">
+                        <div class="travel_testimonial_card">
+                            <div class="travel_testimonial_quote">"</div>
+                            <p class="travel_testimonial_content">
+                                Himachal's Manali was nice. The mountains were very scenic. The trekking experience was
+                                good, though a little tiring. The guide was knowledgeable.
                             </p>
                             <div class="travel_testimonial_rating">
                                 <span>★</span>
@@ -2474,82 +2538,47 @@
                                 <span>★</span>
                             </div>
                             <div class="travel_testimonial_author">
-                                <div class="travel_author_image"
-                                    style="background-image: url('/api/placeholder/100/100')"></div>
+                                <div class="travel_author_image" style="background-image: url('assets/testi3.jpg')">
+                                </div>
                                 <div class="travel_author_info">
-                                    <h4 class="travel_author_name">Michael & Sarah Williams</h4>
-                                    <p class="travel_author_trip">Greek Islands Explorer</p>
+                                    <h4 class="travel_author_name">Vikram Singh</h4>
+                                    <p class="travel_author_trip">Himachal Mountain Trek</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Testimonial 3 -->
                     <div class="travel_testimonial_slide">
                         <div class="travel_testimonial_card">
                             <div class="travel_testimonial_quote">"</div>
                             <p class="travel_testimonial_content">
-                                Japan was a cultural immersion like no other. The attention to
-                                detail in our itinerary was impressive - from traditional
-                                ryokans to modern hotels in Tokyo. The cherry blossom timing
-                                was perfect and the local guides were extremely knowledgeable.
+                                Uttarakhand's Rishikesh was a peaceful experience. The Ganga aarti was beautiful. The
+                                rafting was a bit challenging, but enjoyable. The accommodation was decent.
                             </p>
                             <div class="travel_testimonial_rating">
                                 <span>★</span>
                                 <span>★</span>
                                 <span>★</span>
                                 <span>★</span>
-                                <span>★</span>
                             </div>
                             <div class="travel_testimonial_author">
-                                <div class="travel_author_image"
-                                    style="background-image: url('/api/placeholder/100/100')"></div>
+                                <div class="travel_author_image" style="background-image: url('assets/testi4.jpg')">
+                                </div>
                                 <div class="travel_author_info">
-                                    <h4 class="travel_author_name">David Chen</h4>
-                                    <p class="travel_author_trip">Japan Cultural Journey</p>
+                                    <h4 class="travel_author_name">Anjali & Suresh Kumar</h4>
+                                    <p class="travel_author_trip">Uttarakhand Spiritual Trip</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Testimonial 4 -->
                     <div class="travel_testimonial_slide">
                         <div class="travel_testimonial_card">
                             <div class="travel_testimonial_quote">"</div>
                             <p class="travel_testimonial_content">
-                                The Maldives exceeded all our expectations! Our water villa
-                                was stunning and the all-inclusive package was well worth it.
-                                The snorkeling excursions were incredible - we saw turtles,
-                                rays, and so many colorful fish. Paradise found!
-                            </p>
-                            <div class="travel_testimonial_rating">
-                                <span>★</span>
-                                <span>★</span>
-                                <span>★</span>
-                                <span>★</span>
-                                <span>★</span>
-                            </div>
-                            <div class="travel_testimonial_author">
-                                <div class="travel_author_image"
-                                    style="background-image: url('/api/placeholder/100/100')"></div>
-                                <div class="travel_author_info">
-                                    <h4 class="travel_author_name">Jennifer & Robert Taylor</h4>
-                                    <p class="travel_author_trip">Maldives Island Escape</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial 5 -->
-                    <div class="travel_testimonial_slide">
-                        <div class="travel_testimonial_card">
-                            <div class="travel_testimonial_quote">"</div>
-                            <p class="travel_testimonial_content">
-                                Our Paris getaway was magical! The boutique hotel was in a
-                                perfect location, allowing us to walk to many attractions. The
-                                Seine dinner cruise was a highlight of our trip, and the
-                                skip-the-line access to major attractions saved us so much
-                                time.
+                                We did a trip to Mussoorie. The views were great. The cable car was fun. The food was
+                                okay,
+                                but the transport had a small delay.
                             </p>
                             <div class="travel_testimonial_rating">
                                 <span>★</span>
@@ -2559,11 +2588,11 @@
                                 <span>☆</span>
                             </div>
                             <div class="travel_testimonial_author">
-                                <div class="travel_author_image"
-                                    style="background-image: url('/api/placeholder/100/100')"></div>
+                                <div class="travel_author_image" style="background-image: url('assets/testi1.jpg')">
+                                </div>
                                 <div class="travel_author_info">
-                                    <h4 class="travel_author_name">Amanda Rodriguez</h4>
-                                    <p class="travel_author_trip">Romantic Paris Getaway</p>
+                                    <h4 class="travel_author_name">Neha Kapoor</h4>
+                                    <p class="travel_author_trip">Mussoorie Hill Station Visit</p>
                                 </div>
                             </div>
                         </div>
@@ -2763,8 +2792,6 @@
         </div>
         </div>
     </section>
-
-
     <!-- Gallery Section HTML -->
     <section class="travel_gallery_section" id="gallery">
         <div class="travel_gallery_container">
@@ -2931,7 +2958,7 @@
                 <div class="travel_footer_brand">
                     <div class="travel_footer_logo">
                         <!-- Logo placeholder - replace with your actual logo -->
-                        <div class="travel_logo_text">TravelEscape</div>
+                        <img src="assets/logo-dark.png" class="footer-logo" alt="footer-logo">
                     </div>
                     <div class="travel_footer_motto">"Journeys that transform, memories that last"</div>
                 </div>
@@ -3057,6 +3084,84 @@
 
             // Optional: Reset the form
             travelBookingForm.reset();
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector(".travel_booking_form");
+
+            form.addEventListener("submit", function (event) {
+                // Check if form is valid before submission
+                if (!validateForm()) {
+                    event.preventDefault();
+                }
+            });
+
+            // Input listeners to clear errors
+            const inputs = form.querySelectorAll("input, select");
+            inputs.forEach(input => {
+                input.addEventListener("input", function () {
+                    this.classList.remove("error");
+                    const errorElem = document.getElementById(`${this.id}-error`);
+                    if (errorElem) errorElem.remove();
+                });
+            });
+
+            // Form validation function
+            function validateForm() {
+                let isValid = true;
+                const errorContainer = document.getElementById("form-errors");
+                errorContainer.innerHTML = "";
+
+                // Validate name
+                const nameInput = document.getElementById("travel_name");
+                if (!nameInput.value.trim()) {
+                    showError(nameInput, "Please enter your full name");
+                    isValid = false;
+                }
+
+                // Validate email
+                const emailInput = document.getElementById("travel_email");
+                if (!emailInput.value.trim()) {
+                    showError(emailInput, "Please enter your email address");
+                    isValid = false;
+                } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(emailInput.value)) {
+                    showError(emailInput, "Please enter a valid email address");
+                    isValid = false;
+                }
+
+                // Validate phone
+                const phoneInput = document.getElementById("travel_phone");
+                if (!phoneInput.value.trim()) {
+                    showError(phoneInput, "Please enter your phone number");
+                    isValid = false;
+                }
+
+                // Validate city
+                const cityInput = document.getElementById("travel_city");
+                if (!cityInput.value.trim()) {
+                    showError(cityInput, "Please enter your city");
+                    isValid = false;
+                }
+
+                return isValid;
+            }
+
+            // Show error for a field
+            function showError(inputElement, message) {
+                inputElement.classList.add("error");
+
+                const errorElement = document.createElement("div");
+                errorElement.id = `${inputElement.id}-error`;
+                errorElement.className = "error-message";
+                errorElement.textContent = message;
+                errorElement.style.color = "#ff3333";
+                errorElement.style.fontSize = "14px";
+                errorElement.style.marginTop = "5px";
+
+                inputElement.parentNode.appendChild(errorElement);
+            }
         });
     </script>
 
